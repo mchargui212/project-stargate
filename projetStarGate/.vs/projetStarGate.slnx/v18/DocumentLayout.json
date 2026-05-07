@@ -1,0 +1,87 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\krivoy\\Documents\\uniDocs\\University-projects\\D21Ado\\localExos\\StarGate\\sae2.4_2026\\projetStarGate\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1A1AFDFE-D13B-4D1B-B7F4-C2BBD862B9A0}|projetStarGate.csproj|c:\\users\\krivoy\\documents\\unidocs\\university-projects\\d21ado\\localexos\\stargate\\sae2.4_2026\\projetstargate\\accueil.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A1AFDFE-D13B-4D1B-B7F4-C2BBD862B9A0}|projetStarGate.csproj|solutionrelative:accueil.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A1AFDFE-D13B-4D1B-B7F4-C2BBD862B9A0}|projetStarGate.csproj|c:\\users\\krivoy\\documents\\unidocs\\university-projects\\d21ado\\localexos\\stargate\\sae2.4_2026\\projetstargate\\accueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1A1AFDFE-D13B-4D1B-B7F4-C2BBD862B9A0}|projetStarGate.csproj|solutionrelative:accueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A1AFDFE-D13B-4D1B-B7F4-C2BBD862B9A0}|projetStarGate.csproj|c:\\users\\krivoy\\documents\\unidocs\\university-projects\\d21ado\\localexos\\stargate\\sae2.4_2026\\projetstargate\\accueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A1AFDFE-D13B-4D1B-B7F4-C2BBD862B9A0}|projetStarGate.csproj|solutionrelative:accueil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A1AFDFE-D13B-4D1B-B7F4-C2BBD862B9A0}|projetStarGate.csproj|C:\\Users\\krivoy\\Documents\\uniDocs\\University-projects\\D21Ado\\localExos\\StarGate\\sae2.4_2026\\projetStarGate\\connexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A1AFDFE-D13B-4D1B-B7F4-C2BBD862B9A0}|projetStarGate.csproj|solutionrelative:connexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Accueil.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\krivoy\\Documents\\uniDocs\\University-projects\\D21Ado\\localExos\\StarGate\\sae2.4_2026\\projetStarGate\\Accueil.Designer.cs",
+              "RelativeDocumentMoniker": "Accueil.Designer.cs",
+              "ToolTip": "C:\\Users\\krivoy\\Documents\\uniDocs\\University-projects\\D21Ado\\localExos\\StarGate\\sae2.4_2026\\projetStarGate\\Accueil.Designer.cs",
+              "RelativeToolTip": "Accueil.Designer.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAlwCcAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T14:33:41.003Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Accueil.cs",
+              "DocumentMoniker": "C:\\Users\\krivoy\\Documents\\uniDocs\\University-projects\\D21Ado\\localExos\\StarGate\\sae2.4_2026\\projetStarGate\\Accueil.cs",
+              "RelativeDocumentMoniker": "Accueil.cs",
+              "ToolTip": "C:\\Users\\krivoy\\Documents\\uniDocs\\University-projects\\D21Ado\\localExos\\StarGate\\sae2.4_2026\\projetStarGate\\Accueil.cs",
+              "RelativeToolTip": "Accueil.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAlwBQAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T14:33:28.294Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Accueil.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\krivoy\\Documents\\uniDocs\\University-projects\\D21Ado\\localExos\\StarGate\\sae2.4_2026\\projetStarGate\\Accueil.cs",
+              "RelativeDocumentMoniker": "Accueil.cs",
+              "ToolTip": "C:\\Users\\krivoy\\Documents\\uniDocs\\University-projects\\D21Ado\\localExos\\StarGate\\sae2.4_2026\\projetStarGate\\Accueil.cs [Design]",
+              "RelativeToolTip": "Accueil.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T14:33:26.295Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Connexion.cs",
+              "DocumentMoniker": "C:\\Users\\krivoy\\Documents\\uniDocs\\University-projects\\D21Ado\\localExos\\StarGate\\sae2.4_2026\\projetStarGate\\Connexion.cs",
+              "RelativeDocumentMoniker": "Connexion.cs",
+              "ToolTip": "C:\\Users\\krivoy\\Documents\\uniDocs\\University-projects\\D21Ado\\localExos\\StarGate\\sae2.4_2026\\projetStarGate\\Connexion.cs",
+              "RelativeToolTip": "Connexion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T14:15:03.247Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
