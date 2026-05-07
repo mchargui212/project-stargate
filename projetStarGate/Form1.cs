@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SQLite;
 
 namespace projetStarGate
 {
@@ -15,6 +16,17 @@ namespace projetStarGate
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            try{
+                MessageBox.Show(Connexion.Connec.State.ToString());
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
         }
     }
 }

@@ -1,0 +1,7 @@
+.vs/
+*/.vs/
+*.vsidx
+*.user
+*.suo
+*.userosscache
+*.sln.docstates

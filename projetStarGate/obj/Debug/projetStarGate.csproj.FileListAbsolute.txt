@@ -1,0 +1,13 @@
+C:\Users\krivoy\Documents\uniDocs\University-projects\D21Ado\localExos\StarGate\sae2.4_2026\projetStarGate\bin\Debug\projetStarGate.exe.config
+C:\Users\krivoy\Documents\uniDocs\University-projects\D21Ado\localExos\StarGate\sae2.4_2026\projetStarGate\bin\Debug\projetStarGate.exe
+C:\Users\krivoy\Documents\uniDocs\University-projects\D21Ado\localExos\StarGate\sae2.4_2026\projetStarGate\bin\Debug\projetStarGate.pdb
+C:\Users\krivoy\Documents\uniDocs\University-projects\D21Ado\localExos\StarGate\sae2.4_2026\projetStarGate\bin\Debug\System.Data.SQLite.dll
+C:\Users\krivoy\Documents\uniDocs\University-projects\D21Ado\localExos\StarGate\sae2.4_2026\projetStarGate\bin\Debug\System.Data.SQLite.xml
+C:\Users\krivoy\Documents\uniDocs\University-projects\D21Ado\localExos\StarGate\sae2.4_2026\projetStarGate\obj\Debug\projetStarGate.csproj.AssemblyReference.cache
+C:\Users\krivoy\Documents\uniDocs\University-projects\D21Ado\localExos\StarGate\sae2.4_2026\projetStarGate\obj\Debug\projetStarGate.Form1.resources
+C:\Users\krivoy\Documents\uniDocs\University-projects\D21Ado\localExos\StarGate\sae2.4_2026\projetStarGate\obj\Debug\projetStarGate.Properties.Resources.resources
+C:\Users\krivoy\Documents\uniDocs\University-projects\D21Ado\localExos\StarGate\sae2.4_2026\projetStarGate\obj\Debug\projetStarGate.csproj.GenerateResource.cache
+C:\Users\krivoy\Documents\uniDocs\University-projects\D21Ado\localExos\StarGate\sae2.4_2026\projetStarGate\obj\Debug\projetStarGate.csproj.CoreCompileInputs.cache
+C:\Users\krivoy\Documents\uniDocs\University-projects\D21Ado\localExos\StarGate\sae2.4_2026\projetStarGate\obj\Debug\projetSt.89CBCFE0.Up2Date
+C:\Users\krivoy\Documents\uniDocs\University-projects\D21Ado\localExos\StarGate\sae2.4_2026\projetStarGate\obj\Debug\projetStarGate.exe
+C:\Users\krivoy\Documents\uniDocs\University-projects\D21Ado\localExos\StarGate\sae2.4_2026\projetStarGate\obj\Debug\projetStarGate.pdb
