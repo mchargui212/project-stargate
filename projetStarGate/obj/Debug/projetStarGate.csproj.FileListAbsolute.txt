@@ -11,3 +11,7 @@ C:\Users\krivoy\Documents\uniDocs\University-projects\D21Ado\localExos\StarGate\
 C:\Users\krivoy\Documents\uniDocs\University-projects\D21Ado\localExos\StarGate\sae2.4_2026\projetStarGate\obj\Debug\projetStarGate.exe
 C:\Users\krivoy\Documents\uniDocs\University-projects\D21Ado\localExos\StarGate\sae2.4_2026\projetStarGate\obj\Debug\projetStarGate.pdb
 C:\Users\krivoy\Documents\uniDocs\University-projects\D21Ado\localExos\StarGate\sae2.4_2026\projetStarGate\obj\Debug\projetStarGate.frmAccueil.resources
+\\vfiler-ad-etu.ad.unistra.fr\HOME\Bureau\D21\sae2.4_2026\projetStarGate\obj\Debug\projetStarGate.csproj.AssemblyReference.cache
+\\vfiler-ad-etu.ad.unistra.fr\HOME\Bureau\D21\sae2.4_2026\projetStarGate\obj\Debug\projetStarGate.exe.config
+\\vfiler-ad-etu.ad.unistra.fr\HOME\Bureau\D21\sae2.4_2026\projetStarGate\obj\Debug\projetStarGate.exe
+\\vfiler-ad-etu.ad.unistra.fr\HOME\Bureau\D21\sae2.4_2026\projetStarGate\obj\Debug\projetStarGate.pdb
