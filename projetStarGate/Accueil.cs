@@ -28,5 +28,15 @@ namespace projetStarGate
                 MessageBox.Show(err.Message);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Login fe = new Login();
+            DialogResult fr = fe.ShowDialog();
+            if (fr == DialogResult.Cancel)
+            {
+                MessageBox.Show("Opération annluée");
+            }
+        }
     }
 }

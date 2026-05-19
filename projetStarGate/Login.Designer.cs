@@ -1,6 +1,6 @@
 ﻿namespace projetStarGate
 {
-    partial class Authentification
+    partial class Login
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Authentification));
             this.grbAuthentification = new System.Windows.Forms.GroupBox();
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.btnValider = new System.Windows.Forms.Button();
@@ -84,6 +83,7 @@
             this.btnValider.TabIndex = 5;
             this.btnValider.Text = "Valider";
             this.btnValider.UseVisualStyleBackColor = false;
+            this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
             // txtMdp
             // 
@@ -92,6 +92,7 @@
             this.txtMdp.ForeColor = System.Drawing.SystemColors.Info;
             this.txtMdp.Location = new System.Drawing.Point(146, 66);
             this.txtMdp.Name = "txtMdp";
+            this.txtMdp.PasswordChar = '*';
             this.txtMdp.Size = new System.Drawing.Size(128, 20);
             this.txtMdp.TabIndex = 3;
             // 
@@ -128,7 +129,7 @@
             // picBox
             // 
             this.picBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.picBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picBox.BackgroundImage")));
+            this.picBox.BackgroundImage = global::projetStarGate.Properties.Resources.Logo_Stargate2;
             this.picBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picBox.Location = new System.Drawing.Point(180, 8);
             this.picBox.Name = "picBox";
@@ -136,7 +137,7 @@
             this.picBox.TabIndex = 1;
             this.picBox.TabStop = false;
             // 
-            // Authentification
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -144,7 +145,7 @@
             this.ClientSize = new System.Drawing.Size(466, 248);
             this.Controls.Add(this.picBox);
             this.Controls.Add(this.grbAuthentification);
-            this.Name = "Authentification";
+            this.Name = "Login";
             this.Text = "Login";
             this.grbAuthentification.ResumeLayout(false);
             this.grbAuthentification.PerformLayout();
