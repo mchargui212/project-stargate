@@ -13,8 +13,7 @@ using System.Windows.Forms;
 namespace projetStarGate
 {
     public partial class Creation_Mission : Form
-    {
-        string nomPlanete;
+    {        string nomPlanete;
         int numero;
         string matriculeChef;
         public Creation_Mission()
@@ -41,6 +40,7 @@ namespace projetStarGate
 
         private void Creation_Mission_Load(object sender, EventArgs e)
         {
+            grpEtape2.BackColor = SystemColors.ControlLight;
             grpEtape2.Enabled = false;
             grpEtape3.Enabled = false;
 
@@ -80,32 +80,13 @@ namespace projetStarGate
 
         private void btnValiderPlanete_Click(object sender, EventArgs e)
         {
-            if (cboPlanete.SelectedIndex >= 0){
-                string sql = "select max(numero) from Mission where nomPlanete = '" + cboPlanete.SelectedItem + "';";
-                SQLiteCommand cmd = new SQLiteCommand(sql,Connexion.Connec);
-                try{
-                    int nb = Convert.ToInt32(cmd.ExecuteScalar());
+            if (lblNomMission.Text != "Nom de la mission :")
+            {
+                grpEtape1.Enabled = false;
+                grpEtape2.Enabled = true;
 
-                    lblNomMission.Text = "Nom de la mission :    " + cboPlanete.SelectedItem + " " + nb.ToString();
-
-                    nomPlanete = cboPlanete.SelectedItem.ToString();
-                    numero = nb;
-
-                    grpEtape1.Enabled = false;
-                    grpEtape2.Enabled = true;
-                }
-                catch{
-                    lblNomMission.Text = "Nom de la mission :    " + cboPlanete.SelectedItem + " 1";
-
-                    nomPlanete = cboPlanete.SelectedItem.ToString();
-                    numero = 1;
-
-                    grpEtape1.Enabled = false;
-                    grpEtape2.Enabled = true;
-                } 
-            }
+            }       
         }
-
         private void btnValiderChef_Click(object sender, EventArgs e)
         {
             matriculeChef = cboChef.SelectedValue.ToString();
@@ -143,6 +124,31 @@ namespace projetStarGate
             }
             catch (Exception err) {
                 MessageBox.Show(err.Message);
+            }
+        }
+
+        private void cboPlanete_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboPlanete.SelectedIndex >= 0)
+            {
+                string sql = "select max(numero) from Mission where nomPlanete = '" + cboPlanete.SelectedItem + "';";
+                SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
+                try
+                {
+                    int nb = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    lblNomMission.Text = "Nom de la mission :    " + cboPlanete.SelectedItem + " " + nb.ToString();
+
+                    nomPlanete = cboPlanete.SelectedItem.ToString();
+                    numero = nb;
+                }
+                catch
+                {
+                    lblNomMission.Text = "Nom de la mission :    " + cboPlanete.SelectedItem + " 1";
+
+                    nomPlanete = cboPlanete.SelectedItem.ToString();
+                    numero = 1;
+                }
             }
         }
     }

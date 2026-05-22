@@ -23,6 +23,7 @@ namespace projetStarGate
         {
             txtLogin.Text = "";
             txtMdp.Text = "";
+            this.DialogResult = DialogResult.Cancel;
         }
 
         private void btnValider_Click(object sender, EventArgs e)
@@ -44,6 +45,7 @@ namespace projetStarGate
                     {
                         MessageBox.Show("Accès autorisé", "Authentification");
                         Creation_Mission fe = new Creation_Mission();
+                        fe.Show();
                     }
                     else
                     {
