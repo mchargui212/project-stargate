@@ -11,12 +11,23 @@ using System.Windows.Forms;
 
 namespace projetStarGate
 {
-    public partial class Authentification : Form
+    public partial class Login : Form
     {
-        public Authentification()
+        private string user;
+        public Login()
         {
             InitializeComponent();
+        }
 
+        private void btnAnnuler_Click(object sender, EventArgs e)
+        {
+            txtLogin.Text = "";
+            txtMdp.Text = "";
+            this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void btnValider_Click(object sender, EventArgs e)
+        {
             try
             {
                 //Récupération du mot de passe en fonction du login
@@ -33,24 +44,21 @@ namespace projetStarGate
                     if (valide)
                     {
                         MessageBox.Show("Accès autorisé", "Authentification");
+                        Creation_Mission fe = new Creation_Mission();
+                        fe.Show();
                     }
                     else
                     {
                         MessageBox.Show("Accès refusé", "Authentification");
                     }
                 }
-            }
-
-            catch (Exception err)
-            {
+                else
+                {
+                    MessageBox.Show("Accès refusé : vérifier votre login", "Authentification");
+                }
+            }catch (Exception err){
                 MessageBox.Show(err.Message);
             }
-        }
-
-        private void btnAnnuler_Click(object sender, EventArgs e)
-        {
-            txtLogin.Text = "";
-            txtMdp.Text = "";
         }
     }
 }

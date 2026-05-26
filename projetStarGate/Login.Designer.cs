@@ -1,6 +1,6 @@
 ﻿namespace projetStarGate
 {
-    partial class Authentification
+    partial class Login
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Authentification));
             this.grbAuthentification = new System.Windows.Forms.GroupBox();
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.btnValider = new System.Windows.Forms.Button();
@@ -51,9 +50,11 @@
             this.grbAuthentification.Controls.Add(this.label2);
             this.grbAuthentification.Controls.Add(this.label1);
             this.grbAuthentification.ForeColor = System.Drawing.SystemColors.Info;
-            this.grbAuthentification.Location = new System.Drawing.Point(36, 90);
+            this.grbAuthentification.Location = new System.Drawing.Point(54, 132);
+            this.grbAuthentification.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grbAuthentification.Name = "grbAuthentification";
-            this.grbAuthentification.Size = new System.Drawing.Size(396, 146);
+            this.grbAuthentification.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.grbAuthentification.Size = new System.Drawing.Size(594, 214);
             this.grbAuthentification.TabIndex = 0;
             this.grbAuthentification.TabStop = false;
             this.grbAuthentification.Text = "Authentification";
@@ -63,10 +64,12 @@
             this.btnAnnuler.BackColor = System.Drawing.Color.Gray;
             this.btnAnnuler.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnnuler.ForeColor = System.Drawing.SystemColors.Info;
-            this.btnAnnuler.Location = new System.Drawing.Point(33, 100);
+            this.btnAnnuler.Location = new System.Drawing.Point(50, 146);
+            this.btnAnnuler.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAnnuler.Name = "btnAnnuler";
-            this.btnAnnuler.Size = new System.Drawing.Size(89, 31);
+            this.btnAnnuler.Size = new System.Drawing.Size(134, 46);
             this.btnAnnuler.TabIndex = 6;
             this.btnAnnuler.Text = "Annuler";
             this.btnAnnuler.UseVisualStyleBackColor = false;
@@ -77,22 +80,27 @@
             this.btnValider.BackColor = System.Drawing.Color.Gray;
             this.btnValider.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnValider.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnValider.ForeColor = System.Drawing.SystemColors.Info;
-            this.btnValider.Location = new System.Drawing.Point(274, 100);
+            this.btnValider.Location = new System.Drawing.Point(411, 146);
+            this.btnValider.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnValider.Name = "btnValider";
-            this.btnValider.Size = new System.Drawing.Size(89, 31);
+            this.btnValider.Size = new System.Drawing.Size(134, 46);
             this.btnValider.TabIndex = 5;
             this.btnValider.Text = "Valider";
             this.btnValider.UseVisualStyleBackColor = false;
+            this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
             // txtMdp
             // 
             this.txtMdp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
             this.txtMdp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMdp.ForeColor = System.Drawing.SystemColors.Info;
-            this.txtMdp.Location = new System.Drawing.Point(146, 66);
+            this.txtMdp.Location = new System.Drawing.Point(219, 96);
+            this.txtMdp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtMdp.Name = "txtMdp";
-            this.txtMdp.Size = new System.Drawing.Size(128, 20);
+            this.txtMdp.PasswordChar = '*';
+            this.txtMdp.Size = new System.Drawing.Size(191, 26);
             this.txtMdp.TabIndex = 3;
             // 
             // txtLogin
@@ -100,18 +108,20 @@
             this.txtLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
             this.txtLogin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLogin.ForeColor = System.Drawing.SystemColors.Info;
-            this.txtLogin.Location = new System.Drawing.Point(146, 33);
+            this.txtLogin.Location = new System.Drawing.Point(219, 48);
+            this.txtLogin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtLogin.Name = "txtLogin";
-            this.txtLogin.Size = new System.Drawing.Size(128, 20);
+            this.txtLogin.Size = new System.Drawing.Size(191, 26);
             this.txtLogin.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.Info;
-            this.label2.Location = new System.Drawing.Point(78, 69);
+            this.label2.Location = new System.Drawing.Point(117, 101);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 13);
+            this.label2.Size = new System.Drawing.Size(94, 19);
             this.label2.TabIndex = 1;
             this.label2.Text = "Password : ";
             // 
@@ -119,32 +129,37 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.Info;
-            this.label1.Location = new System.Drawing.Point(98, 36);
+            this.label1.Location = new System.Drawing.Point(147, 52);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 13);
+            this.label1.Size = new System.Drawing.Size(63, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "Login : ";
             // 
             // picBox
             // 
             this.picBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.picBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picBox.BackgroundImage")));
+            this.picBox.BackgroundImage = global::projetStarGate.Properties.Resources.Logo_Stargate2;
             this.picBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picBox.Location = new System.Drawing.Point(180, 8);
+            this.picBox.Location = new System.Drawing.Point(270, 11);
+            this.picBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.picBox.Name = "picBox";
-            this.picBox.Size = new System.Drawing.Size(91, 78);
+            this.picBox.Size = new System.Drawing.Size(136, 114);
             this.picBox.TabIndex = 1;
             this.picBox.TabStop = false;
             // 
-            // Authentification
+            // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.ClientSize = new System.Drawing.Size(466, 248);
+            this.ClientSize = new System.Drawing.Size(699, 362);
             this.Controls.Add(this.picBox);
             this.Controls.Add(this.grbAuthentification);
-            this.Name = "Authentification";
+            this.Font = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.grbAuthentification.ResumeLayout(false);
             this.grbAuthentification.PerformLayout();
