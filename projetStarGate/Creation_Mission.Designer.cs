@@ -33,6 +33,7 @@ namespace projetStarGate
             this.lblEtape1 = new System.Windows.Forms.Label();
             this.btnValiderPlanete = new System.Windows.Forms.Button();
             this.grpEtape1 = new System.Windows.Forms.GroupBox();
+            this.btnModifier = new System.Windows.Forms.Button();
             this.lblNomMission = new System.Windows.Forms.Label();
             this.cboPlanete = new System.Windows.Forms.ComboBox();
             this.dtpRetour = new System.Windows.Forms.DateTimePicker();
@@ -66,7 +67,6 @@ namespace projetStarGate
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.btnModifier = new System.Windows.Forms.Button();
             this.grpEtape1.SuspendLayout();
             this.grpEtape2.SuspendLayout();
             this.grpEtape3.SuspendLayout();
@@ -121,6 +121,20 @@ namespace projetStarGate
             this.grpEtape1.TabStop = false;
             this.grpEtape1.Text = "Nouvelle mission";
             // 
+            // btnModifier
+            // 
+            this.btnModifier.BackColor = System.Drawing.Color.Gray;
+            this.btnModifier.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnModifier.Font = new System.Drawing.Font("Rubik", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModifier.ForeColor = System.Drawing.SystemColors.Info;
+            this.btnModifier.Location = new System.Drawing.Point(699, 49);
+            this.btnModifier.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnModifier.Name = "btnModifier";
+            this.btnModifier.Size = new System.Drawing.Size(111, 37);
+            this.btnModifier.TabIndex = 30;
+            this.btnModifier.Text = "Modifier";
+            this.btnModifier.UseVisualStyleBackColor = false;
+            // 
             // lblNomMission
             // 
             this.lblNomMission.AutoSize = true;
@@ -158,11 +172,10 @@ namespace projetStarGate
             this.dtpRetour.CalendarTrailingForeColor = System.Drawing.SystemColors.Info;
             this.dtpRetour.CustomFormat = "yyyy-MM-dd";
             this.dtpRetour.Font = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpRetour.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpRetour.Location = new System.Drawing.Point(187, 212);
             this.dtpRetour.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dtpRetour.Name = "dtpRetour";
-            this.dtpRetour.Size = new System.Drawing.Size(139, 26);
+            this.dtpRetour.Size = new System.Drawing.Size(264, 26);
             this.dtpRetour.TabIndex = 13;
             // 
             // dtpDepart
@@ -175,11 +188,10 @@ namespace projetStarGate
             this.dtpDepart.CalendarTrailingForeColor = System.Drawing.SystemColors.Info;
             this.dtpDepart.CustomFormat = "yyyy-MM-dd";
             this.dtpDepart.Font = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDepart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDepart.Location = new System.Drawing.Point(188, 157);
             this.dtpDepart.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dtpDepart.Name = "dtpDepart";
-            this.dtpDepart.Size = new System.Drawing.Size(139, 26);
+            this.dtpDepart.Size = new System.Drawing.Size(263, 26);
             this.dtpDepart.TabIndex = 6;
             // 
             // lblDepart
@@ -557,25 +569,11 @@ namespace projetStarGate
             this.label13.TabIndex = 2;
             this.label13.Text = "4 - Affectation des membres";
             // 
-            // btnModifier
-            // 
-            this.btnModifier.BackColor = System.Drawing.Color.Gray;
-            this.btnModifier.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnModifier.Font = new System.Drawing.Font("Rubik", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModifier.ForeColor = System.Drawing.SystemColors.Info;
-            this.btnModifier.Location = new System.Drawing.Point(699, 49);
-            this.btnModifier.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnModifier.Name = "btnModifier";
-            this.btnModifier.Size = new System.Drawing.Size(111, 37);
-            this.btnModifier.TabIndex = 30;
-            this.btnModifier.Text = "Modifier";
-            this.btnModifier.UseVisualStyleBackColor = false;
-            // 
             // Creation_Mission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
             this.BackgroundImage = global::projetStarGate.Properties.Resources.Logo_Stargate2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1682, 946);

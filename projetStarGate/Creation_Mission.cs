@@ -80,6 +80,8 @@ namespace projetStarGate
                 grpEtape1.Enabled = false;
                 grpEtape2.Enabled = true;
 
+                MessageBox.Show(dtpRetour.);
+
                 try
                 {
                     string sql = "select a.matricule as matricule, a.nom || ' ' || a.prenom as nomComplet " +
