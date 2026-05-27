@@ -35,11 +35,13 @@ namespace projetStarGate
             this.grpEtape1 = new System.Windows.Forms.GroupBox();
             this.lblNomMission = new System.Windows.Forms.Label();
             this.cboPlanete = new System.Windows.Forms.ComboBox();
+            this.dtpRetour = new System.Windows.Forms.DateTimePicker();
+            this.dtpDepart = new System.Windows.Forms.DateTimePicker();
+            this.lblDepart = new System.Windows.Forms.Label();
+            this.lblRetour = new System.Windows.Forms.Label();
             this.lblEtape2 = new System.Windows.Forms.Label();
             this.cboChef = new System.Windows.Forms.ComboBox();
             this.grpEtape2 = new System.Windows.Forms.GroupBox();
-            this.btnValiderChef = new System.Windows.Forms.Button();
-            this.grpEtape3 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,32 +50,26 @@ namespace projetStarGate
             this.txtBudget = new System.Windows.Forms.TextBox();
             this.txtDataBaz = new System.Windows.Forms.TextBox();
             this.txtEquipage = new System.Windows.Forms.TextBox();
-            this.dtpRetour = new System.Windows.Forms.DateTimePicker();
             this.lblBudget = new System.Windows.Forms.Label();
             this.lblDataBaz = new System.Windows.Forms.Label();
             this.lblEquipage = new System.Windows.Forms.Label();
             this.lblFeuille = new System.Windows.Forms.Label();
-            this.lblRetour = new System.Windows.Forms.Label();
-            this.lblDepart = new System.Windows.Forms.Label();
-            this.dtpDepart = new System.Windows.Forms.DateTimePicker();
             this.lblEtape3 = new System.Windows.Forms.Label();
-            this.picBox = new System.Windows.Forms.PictureBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.grpEtape3 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnSupprimer = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.btnModifier = new System.Windows.Forms.Button();
             this.grpEtape1.SuspendLayout();
             this.grpEtape2.SuspendLayout();
             this.grpEtape3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picBox)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblEtape1
@@ -81,7 +77,7 @@ namespace projetStarGate
             this.lblEtape1.AutoSize = true;
             this.lblEtape1.Font = new System.Drawing.Font("Rubik", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEtape1.ForeColor = System.Drawing.SystemColors.Info;
-            this.lblEtape1.Location = new System.Drawing.Point(43, 57);
+            this.lblEtape1.Location = new System.Drawing.Point(35, 57);
             this.lblEtape1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblEtape1.Name = "lblEtape1";
             this.lblEtape1.Size = new System.Drawing.Size(241, 23);
@@ -90,14 +86,14 @@ namespace projetStarGate
             // 
             // btnValiderPlanete
             // 
-            this.btnValiderPlanete.BackColor = System.Drawing.Color.Gray;
+            this.btnValiderPlanete.BackColor = System.Drawing.SystemColors.Info;
             this.btnValiderPlanete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnValiderPlanete.Font = new System.Drawing.Font("Rubik", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnValiderPlanete.ForeColor = System.Drawing.SystemColors.Info;
-            this.btnValiderPlanete.Location = new System.Drawing.Point(699, 115);
+            this.btnValiderPlanete.Font = new System.Drawing.Font("Impact", 18F);
+            this.btnValiderPlanete.ForeColor = System.Drawing.Color.DimGray;
+            this.btnValiderPlanete.Location = new System.Drawing.Point(657, 365);
             this.btnValiderPlanete.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnValiderPlanete.Name = "btnValiderPlanete";
-            this.btnValiderPlanete.Size = new System.Drawing.Size(111, 38);
+            this.btnValiderPlanete.Size = new System.Drawing.Size(148, 50);
             this.btnValiderPlanete.TabIndex = 5;
             this.btnValiderPlanete.Text = "Suivant";
             this.btnValiderPlanete.UseVisualStyleBackColor = false;
@@ -105,18 +101,22 @@ namespace projetStarGate
             // 
             // grpEtape1
             // 
-            this.grpEtape1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.grpEtape1.BackColor = System.Drawing.Color.Transparent;
+            this.grpEtape1.Controls.Add(this.btnModifier);
             this.grpEtape1.Controls.Add(this.lblNomMission);
-            this.grpEtape1.Controls.Add(this.btnValiderPlanete);
             this.grpEtape1.Controls.Add(this.cboPlanete);
             this.grpEtape1.Controls.Add(this.lblEtape1);
+            this.grpEtape1.Controls.Add(this.dtpRetour);
+            this.grpEtape1.Controls.Add(this.dtpDepart);
+            this.grpEtape1.Controls.Add(this.lblDepart);
+            this.grpEtape1.Controls.Add(this.lblRetour);
             this.grpEtape1.Font = new System.Drawing.Font("Rubik", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpEtape1.ForeColor = System.Drawing.SystemColors.Info;
             this.grpEtape1.Location = new System.Drawing.Point(-5, 176);
             this.grpEtape1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.grpEtape1.Name = "grpEtape1";
             this.grpEtape1.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.grpEtape1.Size = new System.Drawing.Size(847, 203);
+            this.grpEtape1.Size = new System.Drawing.Size(847, 294);
             this.grpEtape1.TabIndex = 0;
             this.grpEtape1.TabStop = false;
             this.grpEtape1.Text = "Nouvelle mission";
@@ -126,7 +126,7 @@ namespace projetStarGate
             this.lblNomMission.AutoSize = true;
             this.lblNomMission.Font = new System.Drawing.Font("Rubik", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNomMission.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.lblNomMission.Location = new System.Drawing.Point(117, 115);
+            this.lblNomMission.Location = new System.Drawing.Point(117, 108);
             this.lblNomMission.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblNomMission.Name = "lblNomMission";
             this.lblNomMission.Size = new System.Drawing.Size(209, 25);
@@ -148,12 +148,70 @@ namespace projetStarGate
             this.cboPlanete.SelectedIndexChanged += new System.EventHandler(this.cboPlanete_SelectedIndexChanged);
             this.cboPlanete.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbo_KeyPress);
             // 
+            // dtpRetour
+            // 
+            this.dtpRetour.CalendarFont = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpRetour.CalendarForeColor = System.Drawing.SystemColors.Info;
+            this.dtpRetour.CalendarMonthBackground = System.Drawing.Color.Gray;
+            this.dtpRetour.CalendarTitleBackColor = System.Drawing.SystemColors.Info;
+            this.dtpRetour.CalendarTitleForeColor = System.Drawing.SystemColors.Info;
+            this.dtpRetour.CalendarTrailingForeColor = System.Drawing.SystemColors.Info;
+            this.dtpRetour.CustomFormat = "yyyy-MM-dd";
+            this.dtpRetour.Font = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpRetour.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpRetour.Location = new System.Drawing.Point(187, 212);
+            this.dtpRetour.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.dtpRetour.Name = "dtpRetour";
+            this.dtpRetour.Size = new System.Drawing.Size(139, 26);
+            this.dtpRetour.TabIndex = 13;
+            // 
+            // dtpDepart
+            // 
+            this.dtpDepart.CalendarFont = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDepart.CalendarForeColor = System.Drawing.SystemColors.Info;
+            this.dtpDepart.CalendarMonthBackground = System.Drawing.Color.Gray;
+            this.dtpDepart.CalendarTitleBackColor = System.Drawing.SystemColors.Info;
+            this.dtpDepart.CalendarTitleForeColor = System.Drawing.SystemColors.Info;
+            this.dtpDepart.CalendarTrailingForeColor = System.Drawing.SystemColors.Info;
+            this.dtpDepart.CustomFormat = "yyyy-MM-dd";
+            this.dtpDepart.Font = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDepart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpDepart.Location = new System.Drawing.Point(188, 157);
+            this.dtpDepart.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.dtpDepart.Name = "dtpDepart";
+            this.dtpDepart.Size = new System.Drawing.Size(139, 26);
+            this.dtpDepart.TabIndex = 6;
+            // 
+            // lblDepart
+            // 
+            this.lblDepart.AutoSize = true;
+            this.lblDepart.Font = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDepart.ForeColor = System.Drawing.SystemColors.Info;
+            this.lblDepart.Location = new System.Drawing.Point(57, 163);
+            this.lblDepart.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblDepart.Name = "lblDepart";
+            this.lblDepart.Size = new System.Drawing.Size(121, 19);
+            this.lblDepart.TabIndex = 7;
+            this.lblDepart.Text = "Date de départ";
+            // 
+            // lblRetour
+            // 
+            this.lblRetour.AutoSize = true;
+            this.lblRetour.Font = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRetour.ForeColor = System.Drawing.SystemColors.Info;
+            this.lblRetour.Location = new System.Drawing.Point(56, 218);
+            this.lblRetour.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblRetour.Name = "lblRetour";
+            this.lblRetour.Size = new System.Drawing.Size(117, 19);
+            this.lblRetour.TabIndex = 8;
+            this.lblRetour.Text = "Date de retour";
+            // 
             // lblEtape2
             // 
             this.lblEtape2.AutoSize = true;
             this.lblEtape2.Font = new System.Drawing.Font("Rubik", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEtape2.ForeColor = System.Drawing.SystemColors.Info;
-            this.lblEtape2.Location = new System.Drawing.Point(43, 42);
+            this.lblEtape2.Location = new System.Drawing.Point(32, 50);
             this.lblEtape2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblEtape2.Name = "lblEtape2";
             this.lblEtape2.Size = new System.Drawing.Size(205, 23);
@@ -166,72 +224,41 @@ namespace projetStarGate
             this.cboChef.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboChef.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
             this.cboChef.FormattingEnabled = true;
-            this.cboChef.Location = new System.Drawing.Point(290, 38);
+            this.cboChef.Location = new System.Drawing.Point(302, 46);
             this.cboChef.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cboChef.Name = "cboChef";
             this.cboChef.Size = new System.Drawing.Size(274, 27);
             this.cboChef.TabIndex = 4;
+            this.cboChef.SelectedIndexChanged += new System.EventHandler(this.cboChef_SelectedIndexChanged);
             this.cboChef.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbo_KeyPress);
             // 
             // grpEtape2
             // 
-            this.grpEtape2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.grpEtape2.Controls.Add(this.btnValiderChef);
+            this.grpEtape2.BackColor = System.Drawing.Color.Transparent;
             this.grpEtape2.Controls.Add(this.cboChef);
+            this.grpEtape2.Controls.Add(this.label3);
             this.grpEtape2.Controls.Add(this.lblEtape2);
+            this.grpEtape2.Controls.Add(this.label2);
+            this.grpEtape2.Controls.Add(this.label1);
+            this.grpEtape2.Controls.Add(this.btnValiderMission);
+            this.grpEtape2.Controls.Add(this.txtFeuille);
+            this.grpEtape2.Controls.Add(this.txtBudget);
+            this.grpEtape2.Controls.Add(this.txtDataBaz);
+            this.grpEtape2.Controls.Add(this.txtEquipage);
+            this.grpEtape2.Controls.Add(this.lblBudget);
+            this.grpEtape2.Controls.Add(this.lblDataBaz);
+            this.grpEtape2.Controls.Add(this.lblEquipage);
+            this.grpEtape2.Controls.Add(this.lblFeuille);
+            this.grpEtape2.Controls.Add(this.lblEtape3);
+            this.grpEtape2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.grpEtape2.ForeColor = System.Drawing.SystemColors.Info;
-            this.grpEtape2.Location = new System.Drawing.Point(-5, 352);
+            this.grpEtape2.Location = new System.Drawing.Point(-2, 432);
             this.grpEtape2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.grpEtape2.Name = "grpEtape2";
             this.grpEtape2.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.grpEtape2.Size = new System.Drawing.Size(847, 95);
-            this.grpEtape2.TabIndex = 22;
+            this.grpEtape2.Size = new System.Drawing.Size(844, 536);
+            this.grpEtape2.TabIndex = 23;
             this.grpEtape2.TabStop = false;
-            // 
-            // btnValiderChef
-            // 
-            this.btnValiderChef.BackColor = System.Drawing.Color.Gray;
-            this.btnValiderChef.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnValiderChef.Font = new System.Drawing.Font("Rubik", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnValiderChef.ForeColor = System.Drawing.SystemColors.Info;
-            this.btnValiderChef.Location = new System.Drawing.Point(699, 35);
-            this.btnValiderChef.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnValiderChef.Name = "btnValiderChef";
-            this.btnValiderChef.Size = new System.Drawing.Size(111, 38);
-            this.btnValiderChef.TabIndex = 7;
-            this.btnValiderChef.Text = "Suivant";
-            this.btnValiderChef.UseVisualStyleBackColor = false;
-            this.btnValiderChef.Click += new System.EventHandler(this.btnValiderChef_Click);
-            // 
-            // grpEtape3
-            // 
-            this.grpEtape3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.grpEtape3.Controls.Add(this.label3);
-            this.grpEtape3.Controls.Add(this.label2);
-            this.grpEtape3.Controls.Add(this.label1);
-            this.grpEtape3.Controls.Add(this.btnValiderMission);
-            this.grpEtape3.Controls.Add(this.txtFeuille);
-            this.grpEtape3.Controls.Add(this.txtBudget);
-            this.grpEtape3.Controls.Add(this.txtDataBaz);
-            this.grpEtape3.Controls.Add(this.txtEquipage);
-            this.grpEtape3.Controls.Add(this.dtpRetour);
-            this.grpEtape3.Controls.Add(this.lblBudget);
-            this.grpEtape3.Controls.Add(this.lblDataBaz);
-            this.grpEtape3.Controls.Add(this.lblEquipage);
-            this.grpEtape3.Controls.Add(this.lblFeuille);
-            this.grpEtape3.Controls.Add(this.lblRetour);
-            this.grpEtape3.Controls.Add(this.lblDepart);
-            this.grpEtape3.Controls.Add(this.dtpDepart);
-            this.grpEtape3.Controls.Add(this.lblEtape3);
-            this.grpEtape3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.grpEtape3.ForeColor = System.Drawing.SystemColors.Info;
-            this.grpEtape3.Location = new System.Drawing.Point(-2, 432);
-            this.grpEtape3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.grpEtape3.Name = "grpEtape3";
-            this.grpEtape3.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.grpEtape3.Size = new System.Drawing.Size(844, 536);
-            this.grpEtape3.TabIndex = 23;
-            this.grpEtape3.TabStop = false;
             // 
             // label3
             // 
@@ -269,7 +296,7 @@ namespace projetStarGate
             // btnValiderMission
             // 
             this.btnValiderMission.BackColor = System.Drawing.SystemColors.Info;
-            this.btnValiderMission.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnValiderMission.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnValiderMission.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnValiderMission.ForeColor = System.Drawing.Color.DimGray;
             this.btnValiderMission.Location = new System.Drawing.Point(659, 441);
@@ -333,21 +360,6 @@ namespace projetStarGate
             this.txtEquipage.TabIndex = 14;
             this.txtEquipage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Infos_KeyPress);
             // 
-            // dtpRetour
-            // 
-            this.dtpRetour.CalendarForeColor = System.Drawing.SystemColors.Info;
-            this.dtpRetour.CalendarMonthBackground = System.Drawing.Color.Gray;
-            this.dtpRetour.CalendarTitleBackColor = System.Drawing.SystemColors.Info;
-            this.dtpRetour.CalendarTitleForeColor = System.Drawing.SystemColors.Info;
-            this.dtpRetour.CalendarTrailingForeColor = System.Drawing.SystemColors.Info;
-            this.dtpRetour.CustomFormat = "yyyy-MM-dd";
-            this.dtpRetour.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpRetour.Location = new System.Drawing.Point(165, 140);
-            this.dtpRetour.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.dtpRetour.Name = "dtpRetour";
-            this.dtpRetour.Size = new System.Drawing.Size(139, 26);
-            this.dtpRetour.TabIndex = 13;
-            // 
             // lblBudget
             // 
             this.lblBudget.AutoSize = true;
@@ -392,177 +404,82 @@ namespace projetStarGate
             this.lblFeuille.TabIndex = 9;
             this.lblFeuille.Text = "Feuille de route";
             // 
-            // lblRetour
-            // 
-            this.lblRetour.AutoSize = true;
-            this.lblRetour.ForeColor = System.Drawing.SystemColors.Info;
-            this.lblRetour.Location = new System.Drawing.Point(32, 144);
-            this.lblRetour.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.lblRetour.Name = "lblRetour";
-            this.lblRetour.Size = new System.Drawing.Size(117, 19);
-            this.lblRetour.TabIndex = 8;
-            this.lblRetour.Text = "Date de retour";
-            // 
-            // lblDepart
-            // 
-            this.lblDepart.AutoSize = true;
-            this.lblDepart.ForeColor = System.Drawing.SystemColors.Info;
-            this.lblDepart.Location = new System.Drawing.Point(28, 91);
-            this.lblDepart.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.lblDepart.Name = "lblDepart";
-            this.lblDepart.Size = new System.Drawing.Size(121, 19);
-            this.lblDepart.TabIndex = 7;
-            this.lblDepart.Text = "Date de départ";
-            // 
-            // dtpDepart
-            // 
-            this.dtpDepart.CalendarForeColor = System.Drawing.SystemColors.Info;
-            this.dtpDepart.CalendarMonthBackground = System.Drawing.Color.Gray;
-            this.dtpDepart.CalendarTitleBackColor = System.Drawing.SystemColors.Info;
-            this.dtpDepart.CalendarTitleForeColor = System.Drawing.SystemColors.Info;
-            this.dtpDepart.CalendarTrailingForeColor = System.Drawing.SystemColors.Info;
-            this.dtpDepart.CustomFormat = "yyyy-MM-dd";
-            this.dtpDepart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDepart.Location = new System.Drawing.Point(166, 85);
-            this.dtpDepart.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.dtpDepart.Name = "dtpDepart";
-            this.dtpDepart.Size = new System.Drawing.Size(139, 26);
-            this.dtpDepart.TabIndex = 6;
-            // 
             // lblEtape3
             // 
             this.lblEtape3.AutoSize = true;
             this.lblEtape3.Font = new System.Drawing.Font("Rubik", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEtape3.ForeColor = System.Drawing.SystemColors.Info;
-            this.lblEtape3.Location = new System.Drawing.Point(40, 42);
+            this.lblEtape3.Location = new System.Drawing.Point(32, 118);
             this.lblEtape3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblEtape3.Name = "lblEtape3";
             this.lblEtape3.Size = new System.Drawing.Size(265, 23);
             this.lblEtape3.TabIndex = 2;
             this.lblEtape3.Text = "3 - Paramêtres de la mission";
             // 
-            // picBox
+            // grpEtape3
             // 
-            this.picBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.picBox.BackgroundImage = global::projetStarGate.Properties.Resources.Logo_Stargate2;
-            this.picBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picBox.Location = new System.Drawing.Point(739, 10);
-            this.picBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.picBox.Name = "picBox";
-            this.picBox.Size = new System.Drawing.Size(200, 158);
-            this.picBox.TabIndex = 24;
-            this.picBox.TabStop = false;
+            this.grpEtape3.BackColor = System.Drawing.Color.Transparent;
+            this.grpEtape3.Controls.Add(this.flowLayoutPanel1);
+            this.grpEtape3.Controls.Add(this.flowLayoutPanel2);
+            this.grpEtape3.Controls.Add(this.btnSupprimer);
+            this.grpEtape3.Controls.Add(this.button4);
+            this.grpEtape3.Controls.Add(this.button2);
+            this.grpEtape3.Controls.Add(this.comboBox2);
+            this.grpEtape3.Controls.Add(this.label4);
+            this.grpEtape3.Controls.Add(this.button1);
+            this.grpEtape3.Controls.Add(this.comboBox1);
+            this.grpEtape3.Controls.Add(this.label13);
+            this.grpEtape3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.grpEtape3.ForeColor = System.Drawing.SystemColors.Info;
+            this.grpEtape3.Location = new System.Drawing.Point(841, 181);
+            this.grpEtape3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.grpEtape3.Name = "grpEtape3";
+            this.grpEtape3.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.grpEtape3.Size = new System.Drawing.Size(844, 770);
+            this.grpEtape3.TabIndex = 25;
+            this.grpEtape3.TabStop = false;
             // 
-            // groupBox1
+            // flowLayoutPanel1
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.richTextBox2);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.richTextBox1);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.Info;
-            this.groupBox1.Location = new System.Drawing.Point(841, 181);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.groupBox1.Size = new System.Drawing.Size(844, 770);
-            this.groupBox1.TabIndex = 25;
-            this.groupBox1.TabStop = false;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(44, 127);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(740, 180);
+            this.flowLayoutPanel1.TabIndex = 29;
             // 
-            // label13
+            // flowLayoutPanel2
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Rubik", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.SystemColors.Info;
-            this.label13.Location = new System.Drawing.Point(40, 42);
-            this.label13.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(269, 23);
-            this.label13.TabIndex = 2;
-            this.label13.Text = "4 - Affectation des membres";
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(44, 500);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(740, 180);
+            this.flowLayoutPanel2.TabIndex = 28;
             // 
-            // comboBox1
+            // btnSupprimer
             // 
-            this.comboBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(124, 90);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(461, 27);
-            this.comboBox1.TabIndex = 8;
+            this.btnSupprimer.BackColor = System.Drawing.Color.Gray;
+            this.btnSupprimer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSupprimer.Font = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSupprimer.ForeColor = System.Drawing.SystemColors.Info;
+            this.btnSupprimer.Location = new System.Drawing.Point(673, 323);
+            this.btnSupprimer.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnSupprimer.Name = "btnSupprimer";
+            this.btnSupprimer.Size = new System.Drawing.Size(111, 38);
+            this.btnSupprimer.TabIndex = 7;
+            this.btnSupprimer.Text = "Supprimer";
+            this.btnSupprimer.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // button4
             // 
-            this.button1.BackColor = System.Drawing.Color.Gray;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Rubik", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Info;
-            this.button1.Location = new System.Drawing.Point(673, 81);
-            this.button1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 38);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Ajouter";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.richTextBox1.Location = new System.Drawing.Point(124, 137);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(660, 163);
-            this.richTextBox1.TabIndex = 22;
-            this.richTextBox1.Text = "";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Rubik", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.Info;
-            this.label4.Location = new System.Drawing.Point(40, 399);
-            this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(222, 23);
-            this.label4.TabIndex = 23;
-            this.label4.Text = "5 - Objectifs de capture";
-            // 
-            // richTextBox2
-            // 
-            this.richTextBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.richTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.richTextBox2.Location = new System.Drawing.Point(124, 498);
-            this.richTextBox2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(660, 163);
-            this.richTextBox2.TabIndex = 24;
-            this.richTextBox2.Text = "";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(124, 454);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(274, 27);
-            this.comboBox2.TabIndex = 8;
+            this.button4.BackColor = System.Drawing.SystemColors.Info;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.DimGray;
+            this.button4.Location = new System.Drawing.Point(636, 691);
+            this.button4.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(148, 50);
+            this.button4.TabIndex = 26;
+            this.button4.Text = "Valider";
+            this.button4.UseVisualStyleBackColor = false;
             // 
             // button2
             // 
@@ -578,45 +495,95 @@ namespace projetStarGate
             this.button2.Text = "Ajouter";
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // comboBox2
             // 
-            this.button4.BackColor = System.Drawing.SystemColors.Info;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button4.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.DimGray;
-            this.button4.Location = new System.Drawing.Point(636, 691);
-            this.button4.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(148, 50);
-            this.button4.TabIndex = 26;
-            this.button4.Text = "Valider";
-            this.button4.UseVisualStyleBackColor = false;
+            this.comboBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(124, 454);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(274, 27);
+            this.comboBox2.TabIndex = 8;
             // 
-            // button3
+            // label4
             // 
-            this.button3.BackColor = System.Drawing.Color.Gray;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Font = new System.Drawing.Font("Rubik", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.Info;
-            this.button3.Location = new System.Drawing.Point(673, 323);
-            this.button3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(111, 38);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Suivant";
-            this.button3.UseVisualStyleBackColor = false;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Rubik", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.Info;
+            this.label4.Location = new System.Drawing.Point(40, 399);
+            this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(222, 23);
+            this.label4.TabIndex = 23;
+            this.label4.Text = "5 - Objectifs de capture";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Gray;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Rubik", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.Info;
+            this.button1.Location = new System.Drawing.Point(673, 81);
+            this.button1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(111, 38);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Ajouter";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(124, 90);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(461, 27);
+            this.comboBox1.TabIndex = 8;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Rubik", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.SystemColors.Info;
+            this.label13.Location = new System.Drawing.Point(40, 42);
+            this.label13.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(269, 23);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "4 - Affectation des membres";
+            // 
+            // btnModifier
+            // 
+            this.btnModifier.BackColor = System.Drawing.Color.Gray;
+            this.btnModifier.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnModifier.Font = new System.Drawing.Font("Rubik", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModifier.ForeColor = System.Drawing.SystemColors.Info;
+            this.btnModifier.Location = new System.Drawing.Point(699, 49);
+            this.btnModifier.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnModifier.Name = "btnModifier";
+            this.btnModifier.Size = new System.Drawing.Size(111, 37);
+            this.btnModifier.TabIndex = 30;
+            this.btnModifier.Text = "Modifier";
+            this.btnModifier.UseVisualStyleBackColor = false;
             // 
             // Creation_Mission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.BackgroundImage = global::projetStarGate.Properties.Resources.Logo_Stargate2;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1682, 946);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.picBox);
             this.Controls.Add(this.grpEtape3);
+            this.Controls.Add(this.btnValiderPlanete);
             this.Controls.Add(this.grpEtape2);
             this.Controls.Add(this.grpEtape1);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -630,9 +597,6 @@ namespace projetStarGate
             this.grpEtape2.PerformLayout();
             this.grpEtape3.ResumeLayout(false);
             this.grpEtape3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picBox)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -644,7 +608,6 @@ namespace projetStarGate
         private System.Windows.Forms.Label lblEtape2;
         private System.Windows.Forms.ComboBox cboChef;
         private System.Windows.Forms.GroupBox grpEtape2;
-        private System.Windows.Forms.GroupBox grpEtape3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -664,18 +627,17 @@ namespace projetStarGate
         private System.Windows.Forms.Label lblEtape3;
         private System.Windows.Forms.ComboBox cboPlanete;
         private System.Windows.Forms.Label lblNomMission;
-        private System.Windows.Forms.Button btnValiderChef;
-        private PictureBox picBox;
-        private GroupBox groupBox1;
+        private GroupBox grpEtape3;
         private Label label13;
         private ComboBox comboBox1;
         private Button button1;
         private Label label4;
-        private RichTextBox richTextBox1;
-        private Button button3;
+        private Button btnSupprimer;
         private Button button4;
         private Button button2;
         private ComboBox comboBox2;
-        private RichTextBox richTextBox2;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private FlowLayoutPanel flowLayoutPanel2;
+        private Button btnModifier;
     }
 }

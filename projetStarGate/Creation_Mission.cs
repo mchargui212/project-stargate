@@ -19,6 +19,7 @@ namespace projetStarGate
         public Creation_Mission()
         {
             InitializeComponent();
+            
         }
 
         private void Infos_KeyPress(object sender, KeyPressEventArgs e)
@@ -40,7 +41,6 @@ namespace projetStarGate
 
         private void Creation_Mission_Load(object sender, EventArgs e)
         {
-            grpEtape2.BackColor = SystemColors.ControlLight;
             grpEtape2.Enabled = false;
             grpEtape3.Enabled = false;
 
@@ -60,22 +60,17 @@ namespace projetStarGate
                 MessageBox.Show(err.Message);
             }
 
-            try
-            {
-                string sql = "select a.matriculeMembre as matricule, m.nom || ' ' || m.prenom as nomComplet  from Militaire a join Membre m on a.matriculeMembre = m.matricule;";
-                SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
-                DataTable dt = new DataTable();
-                dt.Load(cmd.ExecuteReader());
-
-                cboChef.DataSource = dt;
-                cboChef.DisplayMember = "nomComplet";
-                cboChef.ValueMember = "matricule";
-            }catch (SQLiteException err){
-                MessageBox.Show(err.Message);
-            }
             txtBudget.Text = "0";
             txtDataBaz.Text = "0";
             txtEquipage.Text = "1";
+        }
+
+        private void btnModifier_Click(object sender, EventArgs e)
+        {
+            grpEtape1.Enabled = true;
+            grpEtape2.Enabled = false;
+            grpEtape3.Enabled = false;
+
         }
 
         private void btnValiderPlanete_Click(object sender, EventArgs e)
@@ -85,14 +80,31 @@ namespace projetStarGate
                 grpEtape1.Enabled = false;
                 grpEtape2.Enabled = true;
 
-            }       
-        }
-        private void btnValiderChef_Click(object sender, EventArgs e)
-        {
-            matriculeChef = cboChef.SelectedValue.ToString();
+                try
+                {
+                    string sql = "select a.matricule as matricule, a.nom || ' ' || a.prenom as nomComplet " +
+                        "from Membre a " +
+                        "join Composer c on c.matriculeMembre = a.matricule " +
+                        "join Mission m on c.numeroMission = m.numero and m.nomPlanete = c.nomPlanete " +
+                        "where a.matricule like 'M%' " +
+                        "and m.dateRetour not between @dateDepart and @dateRetour " +
+                        "and m.dateDepart not between @dateDepart and @dateRetour;";
+                    SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
+                    cmd.Parameters.AddWithValue("@dateDepart", dtpDepart.Text);
+                    cmd.Parameters.AddWithValue("@dateRetour", dtpRetour.Text);
 
-            grpEtape2.Enabled = false;
-            grpEtape3.Enabled = true;
+                    DataTable dt = new DataTable();
+                    dt.Load(cmd.ExecuteReader());
+
+                    cboChef.DataSource = dt;
+                    cboChef.DisplayMember = "nomComplet";
+                    cboChef.ValueMember = "matricule";
+                }
+                catch (SQLiteException err)
+                {
+                    MessageBox.Show(err.Message);
+                }
+            }       
         }
 
         private void btnValiderMission_Click(object sender, EventArgs e)
@@ -121,6 +133,9 @@ namespace projetStarGate
                 {
                     MessageBox.Show("Nous n'avons pas réussi à créer votre mission..\nVeillez reéssayer.", "OUPS!");
                 }
+
+                grpEtape2.Enabled = false;
+                grpEtape3.Enabled = true;
             }
             catch (Exception err) {
                 MessageBox.Show(err.Message);
@@ -131,25 +146,20 @@ namespace projetStarGate
         {
             if (cboPlanete.SelectedIndex >= 0)
             {
-                string sql = "select max(numero) from Mission where nomPlanete = '" + cboPlanete.SelectedItem + "';";
+                string sql = @" select ifnull(max(numero), 0) + 1 from Mission where nomPlanete = @nomPlanete";
                 SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
-                try
-                {
-                    int nb = Convert.ToInt32(cmd.ExecuteScalar());
+                cmd.Parameters.AddWithValue("@nomPlanete", cboPlanete.SelectedItem.ToString());
 
-                    lblNomMission.Text = "Nom de la mission :    " + cboPlanete.SelectedItem + " " + nb.ToString();
+                int numero = Convert.ToInt32(cmd.ExecuteScalar());
+                lblNomMission.Text = "Nom de la mission : " + cboPlanete.SelectedItem + " " + numero;
 
-                    nomPlanete = cboPlanete.SelectedItem.ToString();
-                    numero = nb;
-                }
-                catch
-                {
-                    lblNomMission.Text = "Nom de la mission :    " + cboPlanete.SelectedItem + " 1";
-
-                    nomPlanete = cboPlanete.SelectedItem.ToString();
-                    numero = 1;
-                }
+                nomPlanete = cboPlanete.SelectedItem.ToString();
             }
+        }
+
+        private void cboChef_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboChef.SelectedValue != "") matriculeChef = cboChef.SelectedValue.ToString();
         }
     }
 }

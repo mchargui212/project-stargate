@@ -1,36 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ExoUControl
+namespace projetStarGate
 {
-    public partial class MonCadre: UserControl
+    public partial class Membre : UserControl
     {
-        public MonCadre()
+        public Membre()
         {
             InitializeComponent();
         }
-        public MonCadre(string nomEtu, string commentaire, string nomImage)
+        public Membre(string nom, string metier, string nomImage)
         {
             InitializeComponent();
-            this.lblComment.Text = commentaire;
-            this.lblNom.Text = nomEtu;
+            this.lblMetier.Text = metier;
+            this.lblNom.Text = nom;
 
             if (nomImage != string.Empty)
             {
                 pictureBox1.Image = Image.FromFile(nomImage);
             }
-        }
 
-        private void btnInfos_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Fiche de "+lblNom.Text, "Infos");
+            if (metier == "militaire")
+            {
+                this.lblBadge.Text = "🎖️​";
+            }
         }
     }
 }

@@ -62,3 +62,5 @@ U:\Bureau\D21\sae2.4_2026\projetStarGate\obj\Debug\projetStarGate.csproj.CoreCom
 U:\Bureau\D21\sae2.4_2026\projetStarGate\obj\Debug\projetSt.89CBCFE0.Up2Date
 U:\Bureau\D21\sae2.4_2026\projetStarGate\obj\Debug\projetStarGate.exe
 U:\Bureau\D21\sae2.4_2026\projetStarGate\obj\Debug\projetStarGate.pdb
+U:\Bureau\D21\sae2.4_2026\projetStarGate\obj\Debug\projetStarGate.frmTableauDeBord.resources
+U:\Bureau\D21\sae2.4_2026\projetStarGate\obj\Debug\projetStarGate.Membre.resources

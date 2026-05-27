@@ -1,8 +1,0 @@
-C:\Users\lusht\OneDrive\Documents\A21\ExoUControl\bin\Debug\ExoUControl.dll
-C:\Users\lusht\OneDrive\Documents\A21\ExoUControl\bin\Debug\ExoUControl.pdb
-C:\Users\lusht\OneDrive\Documents\A21\ExoUControl\obj\Debug\ExoUControl.csproj.AssemblyReference.cache
-C:\Users\lusht\OneDrive\Documents\A21\ExoUControl\obj\Debug\ExoUControl.MonCadre.resources
-C:\Users\lusht\OneDrive\Documents\A21\ExoUControl\obj\Debug\ExoUControl.csproj.GenerateResource.cache
-C:\Users\lusht\OneDrive\Documents\A21\ExoUControl\obj\Debug\ExoUControl.csproj.CoreCompileInputs.cache
-C:\Users\lusht\OneDrive\Documents\A21\ExoUControl\obj\Debug\ExoUControl.dll
-C:\Users\lusht\OneDrive\Documents\A21\ExoUControl\obj\Debug\ExoUControl.pdb
