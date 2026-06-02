@@ -13,7 +13,6 @@ namespace projetStarGate
 {
     public partial class Login : Form
     {
-        private string user;
         public Login()
         {
             InitializeComponent();
@@ -60,5 +59,6 @@ namespace projetStarGate
                 MessageBox.Show(err.Message);
             }
         }
+
     }
 }

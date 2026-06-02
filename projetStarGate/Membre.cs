@@ -1,36 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace projetStarGate
 {
     public partial class Membre : UserControl
     {
+        public bool Selectionne { get; private set; } = false;
         public Membre()
         {
             InitializeComponent();
         }
+
         public Membre(string nom, string metier, string nomImage)
         {
             InitializeComponent();
-            this.lblMetier.Text = metier;
-            this.lblNom.Text = nom;
 
-            if (nomImage != string.Empty)
+            lblNom.Text = nom;
+            lblMetier.Text = metier;
+
+            if (!string.IsNullOrEmpty(nomImage) && File.Exists(nomImage))
             {
                 pictureBox1.Image = Image.FromFile(nomImage);
             }
-
-            if (metier == "militaire")
+            if (metier.ToLower() == "militaire")
             {
-                this.lblBadge.Text = "🎖️​";
+                lblBadge.Text = "🎖️";
             }
+        }
+
+        private void Membre_Click(object sender, EventArgs e)
+        {
+            Selectionne = !Selectionne;
+
+            BackColor = Selectionne
+                ? Color.LightGray
+                : Color.Transparent;
         }
     }
 }

@@ -73,6 +73,12 @@
     <Compile Include="Accueil.Designer.cs">
       <DependentUpon>Accueil.cs</DependentUpon>
     </Compile>
+    <Compile Include="Alien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Alien.Designer.cs">
+      <DependentUpon>Alien.cs</DependentUpon>
+    </Compile>
     <Compile Include="Connexion.cs" />
     <Compile Include="Creation_Mission.cs">
       <SubType>Form</SubType>
@@ -103,6 +109,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Accueil.resx">
       <DependentUpon>Accueil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Alien.resx">
+      <DependentUpon>Alien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Creation_Mission.resx">
       <DependentUpon>Creation_Mission.cs</DependentUpon>
