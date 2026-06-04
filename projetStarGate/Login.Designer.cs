@@ -49,8 +49,9 @@
             this.grbAuthentification.Controls.Add(this.txtLogin);
             this.grbAuthentification.Controls.Add(this.label2);
             this.grbAuthentification.Controls.Add(this.label1);
+            this.grbAuthentification.Font = new System.Drawing.Font("Rubik", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grbAuthentification.ForeColor = System.Drawing.SystemColors.Info;
-            this.grbAuthentification.Location = new System.Drawing.Point(54, 132);
+            this.grbAuthentification.Location = new System.Drawing.Point(15, 132);
             this.grbAuthentification.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grbAuthentification.Name = "grbAuthentification";
             this.grbAuthentification.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -64,7 +65,7 @@
             this.btnAnnuler.BackColor = System.Drawing.Color.Gray;
             this.btnAnnuler.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnnuler.Font = new System.Drawing.Font("Rubik", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnnuler.ForeColor = System.Drawing.SystemColors.Info;
             this.btnAnnuler.Location = new System.Drawing.Point(50, 146);
             this.btnAnnuler.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -80,7 +81,7 @@
             this.btnValider.BackColor = System.Drawing.Color.Gray;
             this.btnValider.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnValider.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnValider.Font = new System.Drawing.Font("Rubik", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnValider.ForeColor = System.Drawing.SystemColors.Info;
             this.btnValider.Location = new System.Drawing.Point(411, 146);
             this.btnValider.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -95,56 +96,60 @@
             // 
             this.txtMdp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
             this.txtMdp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMdp.Font = new System.Drawing.Font("Rubik", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMdp.ForeColor = System.Drawing.SystemColors.Info;
             this.txtMdp.Location = new System.Drawing.Point(219, 96);
             this.txtMdp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtMdp.Name = "txtMdp";
             this.txtMdp.PasswordChar = '*';
-            this.txtMdp.Size = new System.Drawing.Size(191, 26);
+            this.txtMdp.Size = new System.Drawing.Size(191, 30);
             this.txtMdp.TabIndex = 3;
             // 
             // txtLogin
             // 
             this.txtLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
             this.txtLogin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtLogin.Font = new System.Drawing.Font("Rubik", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLogin.ForeColor = System.Drawing.SystemColors.Info;
             this.txtLogin.Location = new System.Drawing.Point(219, 48);
             this.txtLogin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtLogin.Name = "txtLogin";
-            this.txtLogin.Size = new System.Drawing.Size(191, 26);
+            this.txtLogin.Size = new System.Drawing.Size(191, 30);
             this.txtLogin.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Rubik", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.Info;
-            this.label2.Location = new System.Drawing.Point(117, 101);
+            this.label2.Location = new System.Drawing.Point(105, 98);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 19);
+            this.label2.Size = new System.Drawing.Size(111, 23);
             this.label2.TabIndex = 1;
             this.label2.Text = "Password : ";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Rubik", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Info;
             this.label1.Location = new System.Drawing.Point(147, 52);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 19);
+            this.label1.Size = new System.Drawing.Size(75, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "Login : ";
             // 
             // picBox
             // 
             this.picBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.picBox.BackgroundImage = global::projetStarGate.Properties.Resources.Logo_Stargate2;
+            this.picBox.BackgroundImage = global::projetStarGate.Properties.Resources.Logo_Stargate1;
             this.picBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picBox.Location = new System.Drawing.Point(270, 11);
+            this.picBox.Location = new System.Drawing.Point(234, 7);
             this.picBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.picBox.Name = "picBox";
-            this.picBox.Size = new System.Drawing.Size(136, 114);
+            this.picBox.Size = new System.Drawing.Size(145, 128);
             this.picBox.TabIndex = 1;
             this.picBox.TabStop = false;
             // 
@@ -153,7 +158,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.ClientSize = new System.Drawing.Size(699, 362);
+            this.ClientSize = new System.Drawing.Size(624, 356);
             this.Controls.Add(this.picBox);
             this.Controls.Add(this.grbAuthentification);
             this.Font = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

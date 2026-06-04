@@ -65,3 +65,4 @@ U:\Bureau\D21\sae2.4_2026\projetStarGate\obj\Debug\projetStarGate.pdb
 U:\Bureau\D21\sae2.4_2026\projetStarGate\obj\Debug\projetStarGate.frmTableauDeBord.resources
 U:\Bureau\D21\sae2.4_2026\projetStarGate\obj\Debug\projetStarGate.Membre.resources
 U:\Bureau\D21\sae2.4_2026\projetStarGate\obj\Debug\projetStarGate.Alien.resources
+U:\Bureau\D21\sae2.4_2026\projetStarGate\obj\Debug\projetStarGate.Statistiques.resources

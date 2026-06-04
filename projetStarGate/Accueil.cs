@@ -32,11 +32,13 @@ namespace projetStarGate
         private void button1_Click(object sender, EventArgs e)
         {
             Login fe = new Login();
-            DialogResult fr = fe.ShowDialog();
-            if (fr == DialogResult.Cancel)
-            {
-                MessageBox.Show("Opération annluée");
-            }
+            fe.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Statistiques fe = new Statistiques();
+            fe.Show();
         }
     }
 }

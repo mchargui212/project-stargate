@@ -20,7 +20,6 @@ namespace projetStarGate
         public Creation_Mission()
         {
             InitializeComponent();
-            WindowState = FormWindowState.Maximized;
         }
 
         private void Infos_KeyPress(object sender, KeyPressEventArgs e)
@@ -35,10 +34,11 @@ namespace projetStarGate
 
         private void Creation_Mission_Load(object sender, EventArgs e)
         {
-            grpEtape2.Enabled = false;
-            grpEtape3.Enabled = false;
-            btnSuppriemrMembre.Enabled = false;
+            lblTDB.Visible = false;
+            grpEtape2.Visible = false;
+            grpEtape3.Visible = false;
             btnModifier.Visible = false;
+            btnRetour.Visible = false;
 
             try
             {
@@ -59,6 +59,33 @@ namespace projetStarGate
             txtBudget.Text = "0";
             txtDataBaz.Text = "0";
             txtEquipage.Text = "1";
+
+            cboFiltreMembres.Items.Clear();
+            cboFiltreMembres.Items.Add("Tous");
+
+            try
+            {
+                string sql = "SELECT DISTINCT grade AS metier " +
+                    "FROM Militaire " +
+                    "UNION " +
+                    "SELECT DISTINCT specialite " +
+                    "FROM Civil " +
+                    "ORDER BY metier ";
+
+                SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
+                SQLiteDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                    cboFiltreMembres.Items.Add(dr["metier"].ToString());
+
+                dr.Close();
+
+                cboFiltreMembres.SelectedIndex = 0;
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
         }
 
         private void btnModifier_Click(object sender, EventArgs e)
@@ -95,7 +122,7 @@ namespace projetStarGate
             if (lblNomMission.Text != "Nom de la mission :")
             {
                 grpEtape1.Enabled = false;
-                grpEtape2.Enabled = true;
+                grpEtape2.Visible = true;
 
                 // Initialisation des listes et FlowLayoutPanel
                 membres.Clear();
@@ -167,28 +194,60 @@ namespace projetStarGate
                 try
                 {
                     // Chargement des membres disponibles
-                    string sql = @"SELECT DISTINCT a.matricule AS matricule, a.nom || ' ' || a.prenom AS nomComplet
-                                   FROM Membre a
-                                   LEFT JOIN Composer c ON c.matriculeMembre = a.matricule
-                                   LEFT JOIN Mission m ON c.numeroMission = m.numero AND m.nomPlanete = c.nomPlanete
-                                   WHERE (m.numero IS NULL OR NOT (m.dateDepart <= @dateRetour AND m.dateRetour >= @dateDepart));";
-                    SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
-                    cmd.Parameters.AddWithValue("@dateDepart", dtpDepart.Value.ToString("yyyy-MM-dd"));
-                    cmd.Parameters.AddWithValue("@dateRetour", dtpRetour.Value.ToString("yyyy-MM-dd"));
-
-                    DataTable dt = new DataTable();
-                    dt.Load(cmd.ExecuteReader());
-
-                    cboMembres.DataSource = dt;
-                    cboMembres.DisplayMember = "nomComplet";
-                    cboMembres.ValueMember = "matricule";
+                    ChargerMembres();
                 }
                 catch (SQLiteException err)
                 {
                     MessageBox.Show(err.Message);
                 }
+
                 btnModifier.Visible = true;
                 btnModifier.Enabled = true;
+            }
+        }
+
+        private void ChargerMembres(string filtre = "Tous")
+        {
+            try
+            {
+                string sql = "SELECT DISTINCT " +
+                    "a.matricule, " +
+                    "a.nom || ' ' || a.prenom AS nomComplet, " +
+                    "COALESCE(civ.specialite, mil.grade, 'Militaire') AS metier " +
+                    "FROM Membre a " +
+                    "LEFT JOIN Civil civ ON civ.matriculeMembre = a.matricule " +
+                    "LEFT JOIN Militaire mil ON mil.matriculeMembre = a.matricule " +
+                    "LEFT JOIN Composer c ON c.matriculeMembre = a.matricule " +
+                    "LEFT JOIN Mission m ON c.numeroMission = m.numero " +
+                    "AND c.nomPlanete = m.nomPlanete " +
+                    "WHERE (m.numero IS NULL " +
+                    "OR NOT (m.dateDepart <= @dateRetour " +
+                    "AND m.dateRetour >= @dateDepart))";
+
+                if (filtre != "Tous"){
+                    sql += " AND COALESCE(civ.specialite, mil.grade) = @filtre";
+                }
+
+                SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
+
+                cmd.Parameters.AddWithValue("@dateDepart", dtpDepart.Value.ToString("yyyy-MM-dd"));
+
+                cmd.Parameters.AddWithValue("@dateRetour", dtpRetour.Value.ToString("yyyy-MM-dd"));
+
+                if (filtre != "Tous"){
+                    cmd.Parameters.AddWithValue("@filtre", filtre);
+                }
+
+                DataTable dt = new DataTable();
+                dt.Load(cmd.ExecuteReader());
+
+                cboMembres.DataSource = dt;
+                cboMembres.DisplayMember = "nomComplet";
+                cboMembres.ValueMember = "matricule";
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
             }
         }
 
@@ -296,6 +355,16 @@ namespace projetStarGate
 
         private void btnValider_Click(object sender, EventArgs e)
         {
+            errNBMembres.Clear();
+            if (membres.Count != int.Parse(txtEquipage.Text)-1)
+            {
+                errNBMembres.SetError(
+                    flpMembres, "Le nombre d'équipiers requis doit être égal au nombre de membres sélectionnés."
+                );
+                return;
+            }
+
+
             try
             {
                 // Insert Mission
@@ -359,8 +428,37 @@ namespace projetStarGate
 
         private void btnValiderMission_Click(object sender, EventArgs e)
         {
-            grpEtape2.Enabled = false;
-            grpEtape3.Enabled = true;
+            grpEtape2.Visible = false;
+            grpEtape1.Visible = false;
+            grpEtape3.Visible = true;
+            btnRetour.Visible = true;
+            btnValiderMission.Visible = false;
+        }
+
+        private void cboFiltreMembres_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboFiltreMembres.SelectedItem != null)
+            {
+                ChargerMembres(cboFiltreMembres.SelectedItem.ToString());
+            }
+        }
+
+        private void btnRetour_Click(object sender, EventArgs e)
+        {
+            btnRetour.Visible = false;
+            grpEtape3.Visible = false;
+            grpEtape1.Visible = true;
+            grpEtape2.Visible = true;
+            btnValiderMission.Visible = true;
+        }
+        private void pictureBox1_MouseHover(object sender, EventArgs e)
+        {
+            lblTDB.Visible = true;
+        }
+
+        private void label4_MouseLeave(object sender, EventArgs e)
+        {
+            lblTDB.Visible = false;
         }
     }
 }
