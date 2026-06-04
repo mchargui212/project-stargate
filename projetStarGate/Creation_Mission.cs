@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace projetStarGate
@@ -37,8 +39,9 @@ namespace projetStarGate
             lblTDB.Visible = false;
             grpEtape2.Visible = false;
             grpEtape3.Visible = false;
-            btnModifier.Visible = false;
             btnRetour.Visible = false;
+
+            errDateRetour.SetError(dtpRetour, "La date de départ et la date de retour ne peuvent pas être les mêmes.");
 
             try
             {
@@ -88,15 +91,6 @@ namespace projetStarGate
             }
         }
 
-        private void btnModifier_Click(object sender, EventArgs e)
-        {
-            grpEtape1.Enabled = true;
-            grpEtape2.Enabled = false;
-            grpEtape3.Enabled = false;
-            btnSuppriemrMembre.Enabled = false;
-            btnModifier.Visible = false;
-        }
-
         private void cboPlanete_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboPlanete.SelectedIndex >= 0)
@@ -121,7 +115,6 @@ namespace projetStarGate
         {
             if (lblNomMission.Text != "Nom de la mission :")
             {
-                grpEtape1.Enabled = false;
                 grpEtape2.Visible = true;
 
                 // Initialisation des listes et FlowLayoutPanel
@@ -133,12 +126,19 @@ namespace projetStarGate
                 try
                 {
                     // Chargement du chef disponible
-                    string sql = @"SELECT DISTINCT a.matricule AS matricule, a.nom || ' ' || a.prenom AS nomComplet
-                                   FROM Membre a
-                                   LEFT JOIN Composer c ON c.matriculeMembre = a.matricule
-                                   LEFT JOIN Mission m ON c.numeroMission = m.numero AND m.nomPlanete = c.nomPlanete
-                                   WHERE a.matricule LIKE 'M%'
-                                   AND (m.numero IS NULL OR NOT (m.dateDepart <= @dateRetour AND m.dateRetour >= @dateDepart));";
+                    string sql = @"SELECT a.matricule AS matricule, a.nom || ' ' || a.prenom AS nomComplet
+    FROM Membre a
+    WHERE a.matricule LIKE 'M%'
+    AND NOT EXISTS (
+        SELECT 1
+        FROM Composer c
+        JOIN Mission m ON m.numero = c.numeroMission
+                       AND m.nomPlanete = c.nomPlanete
+        WHERE c.matriculeMembre = a.matricule
+          AND m.dateDepart <= @dateRetour
+          AND m.dateRetour >= @dateDepart
+    );";
+
                     SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
                     cmd.Parameters.AddWithValue("@dateDepart", dtpDepart.Value.ToString("yyyy-MM-dd"));
                     cmd.Parameters.AddWithValue("@dateRetour", dtpRetour.Value.ToString("yyyy-MM-dd"));
@@ -158,11 +158,11 @@ namespace projetStarGate
                 try
                 {
                     // Chargement des espèces ennemies
-                    string sql = @"SELECT e.id AS id, e.nom AS nom
-                                   FROM Espece e
-                                   JOIN Habiter h ON e.id = h.idEspece
-                                   JOIN Ennemi en ON en.idEspece = e.id
-                                   WHERE h.nomPlanete = @nomPlanete;";
+                    string sql = "SELECT e.id AS id, e.nom AS nom " +
+                        "FROM Espece e " +
+                        "JOIN Habiter h ON e.id = h.idEspece " +
+                        "JOIN Ennemi en ON en.idEspece = e.id " +
+                        "WHERE h.nomPlanete = @nomPlanete;";
                     SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
                     cmd.Parameters.AddWithValue("@nomPlanete", nomPlanete);
 
@@ -183,7 +183,7 @@ namespace projetStarGate
                         flpCaptures.Visible = false;
                         btnSuppriemrAlien.Visible = false;
                         btnValider.Location = new System.Drawing.Point(382, 619);
-                    } 
+                    }
 
                 }
                 catch (SQLiteException err)
@@ -200,9 +200,6 @@ namespace projetStarGate
                 {
                     MessageBox.Show(err.Message);
                 }
-
-                btnModifier.Visible = true;
-                btnModifier.Enabled = true;
             }
         }
 
@@ -210,22 +207,23 @@ namespace projetStarGate
         {
             try
             {
-                string sql = "SELECT DISTINCT " +
-                    "a.matricule, " +
-                    "a.nom || ' ' || a.prenom AS nomComplet, " +
-                    "COALESCE(civ.specialite, mil.grade, 'Militaire') AS metier " +
+                string sql = "SELECT a.matricule, a.nom || ' ' || a.prenom AS nomComplet, " +
+                    "IFNULL(civ.specialite, IFNULL(mil.grade, 'Militaire')) AS metier " +
                     "FROM Membre a " +
                     "LEFT JOIN Civil civ ON civ.matriculeMembre = a.matricule " +
                     "LEFT JOIN Militaire mil ON mil.matriculeMembre = a.matricule " +
-                    "LEFT JOIN Composer c ON c.matriculeMembre = a.matricule " +
-                    "LEFT JOIN Mission m ON c.numeroMission = m.numero " +
-                    "AND c.nomPlanete = m.nomPlanete " +
-                    "WHERE (m.numero IS NULL " +
-                    "OR NOT (m.dateDepart <= @dateRetour " +
-                    "AND m.dateRetour >= @dateDepart))";
+                    "WHERE NOT EXISTS ( " +
+                    "    SELECT 1 FROM Composer c " +
+                    "    JOIN Mission m ON m.numero = c.numeroMission " +
+                    "                   AND m.nomPlanete = c.nomPlanete " +
+                    "    WHERE c.matriculeMembre = a.matricule " +
+                    "      AND m.dateDepart <= @dateRetour " +
+                    "      AND m.dateRetour >= @dateDepart " +
+                    ") ";
 
-                if (filtre != "Tous"){
-                    sql += " AND COALESCE(civ.specialite, mil.grade) = @filtre";
+                if (filtre != "Tous")
+                {
+                    sql += " AND IFNULL(civ.specialite, mil.grade) = @filtre";
                 }
 
                 SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
@@ -234,7 +232,8 @@ namespace projetStarGate
 
                 cmd.Parameters.AddWithValue("@dateRetour", dtpRetour.Value.ToString("yyyy-MM-dd"));
 
-                if (filtre != "Tous"){
+                if (filtre != "Tous")
+                {
                     cmd.Parameters.AddWithValue("@filtre", filtre);
                 }
 
@@ -271,7 +270,7 @@ namespace projetStarGate
                             metier = dr.GetString(0);
                         dr.Close();
                     }
-                    Membre nouveauMembre = new Membre(nomComplet, metier, "img/Terre.png");
+                    Membre nouveauMembre = new Membre(nomComplet, metier, "imag/Terre.png");
                     nouveauMembre.Name = matricule;
 
                     flpMembres.Controls.Add(nouveauMembre);
@@ -302,7 +301,7 @@ namespace projetStarGate
                             string arme = dr.GetString(0);
                             int nb = int.Parse(txtObjectif.Text);
 
-                            Alien newAlien = new Alien(nom, arme, nb.ToString(), "img/Terre.png");
+                            Alien newAlien = new Alien(nom, arme, nb.ToString(), "images/Terre.png");
                             flpCaptures.Controls.Add(newAlien);
                             capture.Add(idEspece, nb);
 
@@ -356,11 +355,21 @@ namespace projetStarGate
         private void btnValider_Click(object sender, EventArgs e)
         {
             errNBMembres.Clear();
-            if (membres.Count != int.Parse(txtEquipage.Text)-1)
+            errDateRetour.Clear();
+            errDateDepart.Clear();
+            if (membres.Count != int.Parse(txtEquipage.Text) - 1)
             {
-                errNBMembres.SetError(
-                    flpMembres, "Le nombre d'équipiers requis doit être égal au nombre de membres sélectionnés."
-                );
+                errNBMembres.SetError(flpMembres, "Le nombre d'équipiers requis doit être égal au nombre de membres sélectionnés.");
+                return;
+            }
+            if (dtpDepart.Value.Date >= dtpRetour.Value.Date)
+            {
+                errDateDepart.SetError(dtpDepart, "La date de départ doit être antérieure à la date de retour.");
+                return;
+            }
+            if (dtpDepart.Value.ToString("yyyy-MM-dd") == dtpRetour.Value.ToString("yyyy-MM-dd"))
+            {
+                errDateRetour.SetError(dtpRetour, "La date de retour et la date de départ ne peuvent pas être les mêmes.");
                 return;
             }
 
@@ -407,10 +416,10 @@ namespace projetStarGate
                     cmd.ExecuteNonQuery();
                 }
 
-                // Insert captures
+                // Insert ObjectifCapturr
                 foreach (var kv in capture)
                 {
-                    string sql = "INSERT INTO Capturer (nomPlanete, numeroMission, idEspeceEnnemi, nombre) " +
+                    string sql = "INSERT INTO ObjectifCapture " +
                                  "VALUES(@nomPlanete, @numero, @idEspeceEnnemi, @nb)";
                     SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
                     cmd.Parameters.AddWithValue("@nomPlanete", nomPlanete);
@@ -459,6 +468,30 @@ namespace projetStarGate
         private void label4_MouseLeave(object sender, EventArgs e)
         {
             lblTDB.Visible = false;
+        }
+
+        private void dtpRetour_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpDepart.Value.ToString("yyyy-MM-dd") == dtpRetour.Value.ToString("yyyy-MM-dd"))
+            {
+                errDateRetour.SetError(dtpRetour, "La date de retour et la date de départ ne peuvent pas être les mêmes.");
+                return;
+            }
+            errDateRetour.Clear();
+        }
+
+        private void dtpDepart_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpDepart.Value.Date >= dtpRetour.Value.Date)
+            {
+                errDateDepart.SetError(dtpDepart, "La date de départ doit être antérieure à la date de retour.");
+                return;
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

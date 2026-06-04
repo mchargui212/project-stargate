@@ -1,5 +1,6 @@
 ﻿using projetStarGate;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -50,21 +51,18 @@ namespace projetStarGate
             DataTable table = new DataTable();
             SQLiteConnection connection = Connexion.Connec;
 
-            string requete = @"SELECT m.nomPlanete || '-' || m.numero AS NomMission, " +
-                "d.dateD, d.motif, d.montant, m.budget AS BudgetInitial, m.budget - COALESCE(dep.TotalDepenses,0) AS BudgetActuel " +
-                "FROM Mission m " + 
-                "LEFT JOIN Depense d ON m.nomPlanete = d.nomPlanete AND m.numero = d.numeroMission " + 
+            string requete = "SELECT m.nomPlanete || '-' || m.numero AS NomMission, m.budget AS BudgetInitial, " +
+                "IFNULL(dep.TotalDepenses, 0) AS TotalDepenses, m.budget - IFNULL(dep.TotalDepenses, 0) AS BudgetActuel " +
+                "FROM Mission m " +
                 "LEFT JOIN ( " +
                 "SELECT nomPlanete, numeroMission, SUM(montant) AS TotalDepenses " +
                 "FROM Depense " +
                 "GROUP BY nomPlanete, numeroMission ) " +
-                "dep ON dep.nomPlanete = m.nomPlanete " +
-                "AND dep.numeroMission = m.numero " +
-                "WHERE ( " +
-                "SELECT COUNT(*) " +
+                "dep ON dep.nomPlanete = m.nomPlanete AND dep.numeroMission = m.numero "+
+                "WHERE ( SELECT COUNT(*) " +
                 "FROM Composer c " +
                 "WHERE c.nomPlanete = m.nomPlanete " +
-                "AND c.numeroMission = m.numero ) > 10;";
+                "AND c.numeroMission = m.numero); ";
 
             using (SQLiteCommand command = new SQLiteCommand(requete, connection))
             {
@@ -282,7 +280,7 @@ namespace projetStarGate
 
             dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(40, 40, 40);
             dgv.ColumnHeadersDefaultCellStyle.ForeColor = SystemColors.Info;
-            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Rubik", 10, FontStyle.Bold);
+            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Rubik", 16, FontStyle.Bold);
 
             dgv.DefaultCellStyle.BackColor = Color.FromArgb(56, 56, 56);
             dgv.DefaultCellStyle.ForeColor = Color.White;
@@ -290,7 +288,6 @@ namespace projetStarGate
             dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 120, 215);
             dgv.DefaultCellStyle.SelectionForeColor = Color.White;
 
-            dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(65, 65, 65);
 
             dgv.GridColor = Color.FromArgb(80, 80, 80);
         }

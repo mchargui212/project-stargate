@@ -31,16 +31,6 @@ namespace projetStarGate
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.lblEtape1 = new System.Windows.Forms.Label();
-            this.btnValiderPlanete = new System.Windows.Forms.Button();
-            this.grpEtape1 = new System.Windows.Forms.GroupBox();
-            this.btnModifier = new System.Windows.Forms.Button();
-            this.lblNomMission = new System.Windows.Forms.Label();
-            this.cboPlanete = new System.Windows.Forms.ComboBox();
-            this.dtpRetour = new System.Windows.Forms.DateTimePicker();
-            this.dtpDepart = new System.Windows.Forms.DateTimePicker();
-            this.lblDepart = new System.Windows.Forms.Label();
-            this.lblRetour = new System.Windows.Forms.Label();
             this.lblEtape2 = new System.Windows.Forms.Label();
             this.cboChef = new System.Windows.Forms.ComboBox();
             this.grpEtape2 = new System.Windows.Forms.GroupBox();
@@ -76,163 +66,28 @@ namespace projetStarGate
             this.errNBMembres = new System.Windows.Forms.ErrorProvider(this.components);
             this.errEquipage = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnRetour = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblTDB = new System.Windows.Forms.Label();
-            this.grpEtape1.SuspendLayout();
+            this.errDateDepart = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errDateRetour = new System.Windows.Forms.ErrorProvider(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.grpEtape1 = new System.Windows.Forms.GroupBox();
+            this.btnValiderPlanete = new System.Windows.Forms.Button();
+            this.lblNomMission = new System.Windows.Forms.Label();
+            this.cboPlanete = new System.Windows.Forms.ComboBox();
+            this.lblEtape1 = new System.Windows.Forms.Label();
+            this.dtpRetour = new System.Windows.Forms.DateTimePicker();
+            this.dtpDepart = new System.Windows.Forms.DateTimePicker();
+            this.lblDepart = new System.Windows.Forms.Label();
+            this.lblRetour = new System.Windows.Forms.Label();
             this.grpEtape2.SuspendLayout();
             this.grpEtape3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errNBMembres)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errEquipage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errDateDepart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errDateRetour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.grpEtape1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblEtape1
-            // 
-            this.lblEtape1.AutoSize = true;
-            this.lblEtape1.Font = new System.Drawing.Font("Rubik", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEtape1.ForeColor = System.Drawing.SystemColors.Info;
-            this.lblEtape1.Location = new System.Drawing.Point(35, 57);
-            this.lblEtape1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.lblEtape1.Name = "lblEtape1";
-            this.lblEtape1.Size = new System.Drawing.Size(298, 28);
-            this.lblEtape1.TabIndex = 0;
-            this.lblEtape1.Text = "1 - Planête de destination";
-            // 
-            // btnValiderPlanete
-            // 
-            this.btnValiderPlanete.BackColor = System.Drawing.SystemColors.Info;
-            this.btnValiderPlanete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnValiderPlanete.Font = new System.Drawing.Font("Impact", 18F);
-            this.btnValiderPlanete.ForeColor = System.Drawing.Color.DimGray;
-            this.btnValiderPlanete.Location = new System.Drawing.Point(647, 218);
-            this.btnValiderPlanete.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnValiderPlanete.Name = "btnValiderPlanete";
-            this.btnValiderPlanete.Size = new System.Drawing.Size(148, 50);
-            this.btnValiderPlanete.TabIndex = 5;
-            this.btnValiderPlanete.Text = "Suivant";
-            this.btnValiderPlanete.UseVisualStyleBackColor = false;
-            this.btnValiderPlanete.Click += new System.EventHandler(this.btnValiderPlanete_Click);
-            // 
-            // grpEtape1
-            // 
-            this.grpEtape1.BackColor = System.Drawing.Color.Transparent;
-            this.grpEtape1.Controls.Add(this.btnModifier);
-            this.grpEtape1.Controls.Add(this.btnValiderPlanete);
-            this.grpEtape1.Controls.Add(this.lblNomMission);
-            this.grpEtape1.Controls.Add(this.cboPlanete);
-            this.grpEtape1.Controls.Add(this.lblEtape1);
-            this.grpEtape1.Controls.Add(this.dtpRetour);
-            this.grpEtape1.Controls.Add(this.dtpDepart);
-            this.grpEtape1.Controls.Add(this.lblDepart);
-            this.grpEtape1.Controls.Add(this.lblRetour);
-            this.grpEtape1.Font = new System.Drawing.Font("Rubik", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpEtape1.ForeColor = System.Drawing.SystemColors.Info;
-            this.grpEtape1.Location = new System.Drawing.Point(-3, 104);
-            this.grpEtape1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.grpEtape1.Name = "grpEtape1";
-            this.grpEtape1.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.grpEtape1.Size = new System.Drawing.Size(851, 319);
-            this.grpEtape1.TabIndex = 0;
-            this.grpEtape1.TabStop = false;
-            this.grpEtape1.Text = "Nouvelle mission";
-            // 
-            // btnModifier
-            // 
-            this.btnModifier.BackColor = System.Drawing.Color.Gray;
-            this.btnModifier.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnModifier.Font = new System.Drawing.Font("Rubik", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModifier.ForeColor = System.Drawing.SystemColors.Info;
-            this.btnModifier.Location = new System.Drawing.Point(667, 51);
-            this.btnModifier.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnModifier.Name = "btnModifier";
-            this.btnModifier.Size = new System.Drawing.Size(111, 37);
-            this.btnModifier.TabIndex = 30;
-            this.btnModifier.Text = "Modifier";
-            this.btnModifier.UseVisualStyleBackColor = false;
-            this.btnModifier.Click += new System.EventHandler(this.btnModifier_Click);
-            // 
-            // lblNomMission
-            // 
-            this.lblNomMission.AutoSize = true;
-            this.lblNomMission.Font = new System.Drawing.Font("Rubik", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNomMission.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.lblNomMission.Location = new System.Drawing.Point(161, 112);
-            this.lblNomMission.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.lblNomMission.Name = "lblNomMission";
-            this.lblNomMission.Size = new System.Drawing.Size(209, 25);
-            this.lblNomMission.TabIndex = 6;
-            this.lblNomMission.Text = "Nom de la mission :";
-            // 
-            // cboPlanete
-            // 
-            this.cboPlanete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.cboPlanete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cboPlanete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboPlanete.ForeColor = System.Drawing.SystemColors.Info;
-            this.cboPlanete.FormattingEnabled = true;
-            this.cboPlanete.Location = new System.Drawing.Point(343, 57);
-            this.cboPlanete.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.cboPlanete.Name = "cboPlanete";
-            this.cboPlanete.Size = new System.Drawing.Size(172, 28);
-            this.cboPlanete.TabIndex = 3;
-            this.cboPlanete.SelectedIndexChanged += new System.EventHandler(this.cboPlanete_SelectedIndexChanged);
-            this.cboPlanete.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbo_KeyPress);
-            // 
-            // dtpRetour
-            // 
-            this.dtpRetour.CalendarFont = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpRetour.CalendarForeColor = System.Drawing.SystemColors.Info;
-            this.dtpRetour.CalendarMonthBackground = System.Drawing.Color.Gray;
-            this.dtpRetour.CalendarTitleBackColor = System.Drawing.Color.DodgerBlue;
-            this.dtpRetour.CalendarTitleForeColor = System.Drawing.SystemColors.Info;
-            this.dtpRetour.CalendarTrailingForeColor = System.Drawing.SystemColors.Info;
-            this.dtpRetour.CustomFormat = "yyyy-MM-dd";
-            this.dtpRetour.Font = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpRetour.Location = new System.Drawing.Point(251, 233);
-            this.dtpRetour.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.dtpRetour.Name = "dtpRetour";
-            this.dtpRetour.Size = new System.Drawing.Size(264, 26);
-            this.dtpRetour.TabIndex = 13;
-            // 
-            // dtpDepart
-            // 
-            this.dtpDepart.CalendarFont = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDepart.CalendarForeColor = System.Drawing.SystemColors.Info;
-            this.dtpDepart.CalendarMonthBackground = System.Drawing.Color.Gray;
-            this.dtpDepart.CalendarTitleBackColor = System.Drawing.Color.DodgerBlue;
-            this.dtpDepart.CalendarTitleForeColor = System.Drawing.SystemColors.Info;
-            this.dtpDepart.CalendarTrailingForeColor = System.Drawing.SystemColors.Info;
-            this.dtpDepart.CustomFormat = "yyyy-MM-dd";
-            this.dtpDepart.Font = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDepart.Location = new System.Drawing.Point(252, 178);
-            this.dtpDepart.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.dtpDepart.Name = "dtpDepart";
-            this.dtpDepart.Size = new System.Drawing.Size(263, 26);
-            this.dtpDepart.TabIndex = 6;
-            // 
-            // lblDepart
-            // 
-            this.lblDepart.AutoSize = true;
-            this.lblDepart.Font = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDepart.ForeColor = System.Drawing.SystemColors.Info;
-            this.lblDepart.Location = new System.Drawing.Point(121, 184);
-            this.lblDepart.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.lblDepart.Name = "lblDepart";
-            this.lblDepart.Size = new System.Drawing.Size(121, 19);
-            this.lblDepart.TabIndex = 7;
-            this.lblDepart.Text = "Date de départ";
-            // 
-            // lblRetour
-            // 
-            this.lblRetour.AutoSize = true;
-            this.lblRetour.Font = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRetour.ForeColor = System.Drawing.SystemColors.Info;
-            this.lblRetour.Location = new System.Drawing.Point(120, 239);
-            this.lblRetour.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.lblRetour.Name = "lblRetour";
-            this.lblRetour.Size = new System.Drawing.Size(117, 19);
-            this.lblRetour.TabIndex = 8;
-            this.lblRetour.Text = "Date de retour";
             // 
             // lblEtape2
             // 
@@ -467,7 +322,7 @@ namespace projetStarGate
             this.grpEtape3.Controls.Add(this.label13);
             this.grpEtape3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.grpEtape3.ForeColor = System.Drawing.SystemColors.Info;
-            this.grpEtape3.Location = new System.Drawing.Point(-2, 109);
+            this.grpEtape3.Location = new System.Drawing.Point(-1, 109);
             this.grpEtape3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.grpEtape3.Name = "grpEtape3";
             this.grpEtape3.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -481,7 +336,7 @@ namespace projetStarGate
             this.btnValider.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnValider.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnValider.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.btnValider.Location = new System.Drawing.Point(317, 850);
+            this.btnValider.Location = new System.Drawing.Point(317, 848);
             this.btnValider.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(196, 65);
@@ -687,30 +542,173 @@ namespace projetStarGate
             this.btnRetour.UseVisualStyleBackColor = false;
             this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::projetStarGate.Properties.Resources.Logo_Stargate1;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(366, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(106, 96);
-            this.pictureBox1.TabIndex = 28;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseHover += new System.EventHandler(this.pictureBox1_MouseHover);
-            // 
             // lblTDB
             // 
             this.lblTDB.AutoSize = true;
             this.lblTDB.BackColor = System.Drawing.Color.Transparent;
-            this.lblTDB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblTDB.Font = new System.Drawing.Font("Rubik", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTDB.ForeColor = System.Drawing.SystemColors.Info;
             this.lblTDB.Location = new System.Drawing.Point(338, 23);
             this.lblTDB.Name = "lblTDB";
-            this.lblTDB.Size = new System.Drawing.Size(162, 48);
+            this.lblTDB.Size = new System.Drawing.Size(160, 46);
             this.lblTDB.TabIndex = 29;
             this.lblTDB.Text = "      Retour au \r\ntableau de bord";
+            this.lblTDB.Click += new System.EventHandler(this.pictureBox1_Click);
             this.lblTDB.MouseLeave += new System.EventHandler(this.label4_MouseLeave);
+            // 
+            // errDateDepart
+            // 
+            this.errDateDepart.ContainerControl = this;
+            // 
+            // errDateRetour
+            // 
+            this.errDateRetour.ContainerControl = this;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::projetStarGate.Properties.Resources.Logo_Stargate1;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(353, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(132, 115);
+            this.pictureBox1.TabIndex = 28;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBox1.MouseHover += new System.EventHandler(this.pictureBox1_MouseHover);
+            // 
+            // grpEtape1
+            // 
+            this.grpEtape1.BackColor = System.Drawing.Color.Transparent;
+            this.grpEtape1.Controls.Add(this.btnValiderPlanete);
+            this.grpEtape1.Controls.Add(this.lblNomMission);
+            this.grpEtape1.Controls.Add(this.cboPlanete);
+            this.grpEtape1.Controls.Add(this.lblEtape1);
+            this.grpEtape1.Controls.Add(this.dtpRetour);
+            this.grpEtape1.Controls.Add(this.dtpDepart);
+            this.grpEtape1.Controls.Add(this.lblDepart);
+            this.grpEtape1.Controls.Add(this.lblRetour);
+            this.grpEtape1.Font = new System.Drawing.Font("Rubik", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpEtape1.ForeColor = System.Drawing.SystemColors.Info;
+            this.grpEtape1.Location = new System.Drawing.Point(-3, 104);
+            this.grpEtape1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.grpEtape1.Name = "grpEtape1";
+            this.grpEtape1.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.grpEtape1.Size = new System.Drawing.Size(851, 319);
+            this.grpEtape1.TabIndex = 0;
+            this.grpEtape1.TabStop = false;
+            this.grpEtape1.Text = "Nouvelle mission";
+            // 
+            // btnValiderPlanete
+            // 
+            this.btnValiderPlanete.BackColor = System.Drawing.SystemColors.Info;
+            this.btnValiderPlanete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnValiderPlanete.Font = new System.Drawing.Font("Impact", 18F);
+            this.btnValiderPlanete.ForeColor = System.Drawing.Color.DimGray;
+            this.btnValiderPlanete.Location = new System.Drawing.Point(647, 218);
+            this.btnValiderPlanete.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnValiderPlanete.Name = "btnValiderPlanete";
+            this.btnValiderPlanete.Size = new System.Drawing.Size(148, 50);
+            this.btnValiderPlanete.TabIndex = 5;
+            this.btnValiderPlanete.Text = "Suivant";
+            this.btnValiderPlanete.UseVisualStyleBackColor = false;
+            this.btnValiderPlanete.Click += new System.EventHandler(this.btnValiderPlanete_Click);
+            // 
+            // lblNomMission
+            // 
+            this.lblNomMission.AutoSize = true;
+            this.lblNomMission.Font = new System.Drawing.Font("Rubik", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNomMission.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblNomMission.Location = new System.Drawing.Point(161, 112);
+            this.lblNomMission.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblNomMission.Name = "lblNomMission";
+            this.lblNomMission.Size = new System.Drawing.Size(209, 25);
+            this.lblNomMission.TabIndex = 6;
+            this.lblNomMission.Text = "Nom de la mission :";
+            // 
+            // cboPlanete
+            // 
+            this.cboPlanete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.cboPlanete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cboPlanete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboPlanete.ForeColor = System.Drawing.SystemColors.Info;
+            this.cboPlanete.FormattingEnabled = true;
+            this.cboPlanete.Location = new System.Drawing.Point(343, 57);
+            this.cboPlanete.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.cboPlanete.Name = "cboPlanete";
+            this.cboPlanete.Size = new System.Drawing.Size(172, 28);
+            this.cboPlanete.TabIndex = 3;
+            this.cboPlanete.SelectedIndexChanged += new System.EventHandler(this.cboPlanete_SelectedIndexChanged);
+            this.cboPlanete.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbo_KeyPress);
+            // 
+            // lblEtape1
+            // 
+            this.lblEtape1.AutoSize = true;
+            this.lblEtape1.Font = new System.Drawing.Font("Rubik", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEtape1.ForeColor = System.Drawing.SystemColors.Info;
+            this.lblEtape1.Location = new System.Drawing.Point(35, 57);
+            this.lblEtape1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblEtape1.Name = "lblEtape1";
+            this.lblEtape1.Size = new System.Drawing.Size(298, 28);
+            this.lblEtape1.TabIndex = 0;
+            this.lblEtape1.Text = "1 - Planête de destination";
+            // 
+            // dtpRetour
+            // 
+            this.dtpRetour.CalendarFont = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpRetour.CalendarForeColor = System.Drawing.SystemColors.Info;
+            this.dtpRetour.CalendarMonthBackground = System.Drawing.Color.Gray;
+            this.dtpRetour.CalendarTitleBackColor = System.Drawing.Color.DodgerBlue;
+            this.dtpRetour.CalendarTitleForeColor = System.Drawing.SystemColors.Info;
+            this.dtpRetour.CalendarTrailingForeColor = System.Drawing.SystemColors.Info;
+            this.dtpRetour.CustomFormat = "yyyy-MM-dd";
+            this.dtpRetour.Font = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpRetour.Location = new System.Drawing.Point(251, 233);
+            this.dtpRetour.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.dtpRetour.Name = "dtpRetour";
+            this.dtpRetour.Size = new System.Drawing.Size(264, 26);
+            this.dtpRetour.TabIndex = 13;
+            this.dtpRetour.ValueChanged += new System.EventHandler(this.dtpRetour_ValueChanged);
+            // 
+            // dtpDepart
+            // 
+            this.dtpDepart.CalendarFont = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDepart.CalendarForeColor = System.Drawing.SystemColors.Info;
+            this.dtpDepart.CalendarMonthBackground = System.Drawing.Color.Gray;
+            this.dtpDepart.CalendarTitleBackColor = System.Drawing.Color.DodgerBlue;
+            this.dtpDepart.CalendarTitleForeColor = System.Drawing.SystemColors.Info;
+            this.dtpDepart.CalendarTrailingForeColor = System.Drawing.SystemColors.Info;
+            this.dtpDepart.CustomFormat = "yyyy-MM-dd";
+            this.dtpDepart.Font = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDepart.Location = new System.Drawing.Point(252, 178);
+            this.dtpDepart.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.dtpDepart.Name = "dtpDepart";
+            this.dtpDepart.Size = new System.Drawing.Size(263, 26);
+            this.dtpDepart.TabIndex = 6;
+            this.dtpDepart.ValueChanged += new System.EventHandler(this.dtpDepart_ValueChanged);
+            // 
+            // lblDepart
+            // 
+            this.lblDepart.AutoSize = true;
+            this.lblDepart.Font = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDepart.ForeColor = System.Drawing.SystemColors.Info;
+            this.lblDepart.Location = new System.Drawing.Point(121, 184);
+            this.lblDepart.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblDepart.Name = "lblDepart";
+            this.lblDepart.Size = new System.Drawing.Size(121, 19);
+            this.lblDepart.TabIndex = 7;
+            this.lblDepart.Text = "Date de départ";
+            // 
+            // lblRetour
+            // 
+            this.lblRetour.AutoSize = true;
+            this.lblRetour.Font = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRetour.ForeColor = System.Drawing.SystemColors.Info;
+            this.lblRetour.Location = new System.Drawing.Point(120, 239);
+            this.lblRetour.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblRetour.Name = "lblRetour";
+            this.lblRetour.Size = new System.Drawing.Size(117, 19);
+            this.lblRetour.TabIndex = 8;
+            this.lblRetour.Text = "Date de retour";
             // 
             // Creation_Mission
             // 
@@ -723,8 +721,8 @@ namespace projetStarGate
             this.Controls.Add(this.lblTDB);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnRetour);
-            this.Controls.Add(this.btnValiderMission);
             this.Controls.Add(this.grpEtape3);
+            this.Controls.Add(this.btnValiderMission);
             this.Controls.Add(this.grpEtape2);
             this.Controls.Add(this.grpEtape1);
             this.DoubleBuffered = true;
@@ -735,15 +733,17 @@ namespace projetStarGate
             this.Name = "Creation_Mission";
             this.Text = "Création d\'une nouvelle mission";
             this.Load += new System.EventHandler(this.Creation_Mission_Load);
-            this.grpEtape1.ResumeLayout(false);
-            this.grpEtape1.PerformLayout();
             this.grpEtape2.ResumeLayout(false);
             this.grpEtape2.PerformLayout();
             this.grpEtape3.ResumeLayout(false);
             this.grpEtape3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errNBMembres)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errEquipage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errDateDepart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errDateRetour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.grpEtape1.ResumeLayout(false);
+            this.grpEtape1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -780,7 +780,6 @@ namespace projetStarGate
         private ComboBox cboMembres;
         private Button btnAjouterMembre;
         private Button btnSuppriemrMembre;
-        private Button btnModifier;
         private FlowLayoutPanel flpMembres;
         private Button btnValider;
         private Button btnAjouterCapture;
@@ -797,5 +796,7 @@ namespace projetStarGate
         private Button btnRetour;
         private Label lblTDB;
         private PictureBox pictureBox1;
+        private ErrorProvider errDateDepart;
+        private ErrorProvider errDateRetour;
     }
 }

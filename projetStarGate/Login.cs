@@ -1,17 +1,16 @@
 ﻿using System;
+using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace projetStarGate
 {
     public partial class Login : Form
     {
-        private GroupBox groupBoxLoading;
         private Label lblLoading;
-        private Timer timerLoading;
-        private int dotCount = 0;
-        private int maxDots = 3;
+        private bool _loading;
 
         public Login()
         {
@@ -21,103 +20,102 @@ namespace projetStarGate
 
         private void CreateLoadingUI()
         {
-            groupBoxLoading = new GroupBox();
-            groupBoxLoading.Text = "";
-            groupBoxLoading.Location = new System.Drawing.Point(215, 112);
-            groupBoxLoading.Name = "groupBox1";
-            groupBoxLoading.ForeColor = System.Drawing.SystemColors.Info;
-            groupBoxLoading.Size = new System.Drawing.Size(210, 69);
-            groupBoxLoading.Visible = false;
-
-            lblLoading = new Label();
-            lblLoading.Text = "Loading";
-            lblLoading.AutoSize = true;
-            lblLoading.Font = new Font("Rubik", 12, FontStyle.Bold);
-            lblLoading.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            lblLoading.Location = new Point(50, 40);
-
-            groupBoxLoading.Controls.Add(lblLoading);
-            this.Controls.Add(groupBoxLoading);
-
-            timerLoading = new Timer();
-            timerLoading.Interval = 500;
-            timerLoading.Tick += TimerLoading_Tick;
-        }
-
-        private void btnValider_Click(object sender, EventArgs e)
-        {
-            StartLoading();
-        }
-
-        private void StartLoading()
-        {
-            dotCount = 0;
-            lblLoading.Text = "Loading";
-            groupBoxLoading.Visible = true;
-            groupBoxLoading.BringToFront();
-            btnValider.Enabled = false;
-
-            timerLoading.Start();
-        }
-
-        private void TimerLoading_Tick(object sender, EventArgs e)
-        {
-            dotCount++;
-            if (dotCount > maxDots)
+            lblLoading = new Label
             {
-                dotCount = 0;
-            }
+                Text = "Connexion",
+                Font = new Font("Rubik", 32, FontStyle.Bold),
+                ForeColor = Color.White,
+                AutoSize = true,
+                Visible = false
+            };
 
-            lblLoading.Text = "Loading" + new string('.', dotCount);
+            lblLoading.Location = new Point(176, 197);
+            this.Controls.Add(lblLoading);
+            lblLoading.BringToFront();
+        }
 
-            if (dotCount == 0)
+        // Animation "Connexion..."
+        private async Task ShowLoading()
+        {
+            int dots = 0;
+            while (_loading)
             {
-                StopLoading();
-                ValiderLogin();
+                dots = (dots + 1) % 4;
+                lblLoading.Text = "Connexion" + new string('.', dots);
+                await Task.Delay(300);
             }
         }
 
-        private void StopLoading()
+        private async void btnValider_Click(object sender, EventArgs e)
         {
-            timerLoading.Stop();
-            groupBoxLoading.Visible = false;
-            btnValider.Enabled = true;
+            if (ValiderLogin())
+            {
+                lblLoading.Visible = true;
+                _loading = true;
+
+                // Lancer l'animation sans bloquer l'UI
+                var loadingTask = ShowLoading();
+
+                // Simulation d'un temps de chargement (ou remplace par tes opérations)
+                await Task.Delay(1200);
+
+                // Arrêter l'animation
+                _loading = false;
+                lblLoading.Visible = false;
+                await loadingTask; // attendre fin boucle proprement
+
+                new Creation_Mission().Show();
+                this.Hide();
+            }
+            else
+            {
+                await Vibrer();
+            }
         }
 
-        private void ValiderLogin()
+        private bool ValiderLogin()
         {
             try
             {
-                string sql = $"SELECT mdp FROM Admin WHERE login = '{txtLogin.Text}'";
-                SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
-                object resultat = cmd.ExecuteScalar();
+                if (Connexion.Connec.State != ConnectionState.Open)
+                    Connexion.Connec.Open();
 
-                if (resultat != DBNull.Value && resultat != null)
-                {
-                    string mdpStocke = resultat.ToString();
-                    bool valide = BCrypt.Net.BCrypt.Verify(txtMdp.Text, mdpStocke);
+                string sql = "SELECT mdp FROM Admin WHERE login = @login";
 
-                    if (valide)
-                    {
-                        MessageBox.Show("Accès autorisé", "Authentification");
-                        Creation_Mission fe = new Creation_Mission();
-                        fe.Show();
-                        this.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Accès refusé", "Authentification");
-                    }
-                }
-                else
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec))
                 {
-                    MessageBox.Show("Accès refusé : vérifier votre login", "Authentification");
+                    cmd.Parameters.AddWithValue("@login", txtLogin.Text.Trim());
+                    object result = cmd.ExecuteScalar();
+
+                    if (result == null || result == DBNull.Value)
+                        return false;
+
+                    string mdpStocke = result.ToString();
+                    return BCrypt.Net.BCrypt.Verify(txtMdp.Text, mdpStocke);
                 }
             }
-            catch (Exception err)
+            catch (Exception ex)
             {
-                MessageBox.Show(err.Message);
+                MessageBox.Show("Erreur lors de la connexion : " + ex.Message);
+                return false;
             }
+        }
+
+        private async Task Vibrer()
+        {
+            var originalLocation = this.Location;
+            int pixels = 10;
+            int count = 6;
+
+            for (int i = 0; i < count; i++)
+            {
+                this.Location = new Point(originalLocation.X + pixels, originalLocation.Y);
+                await Task.Delay(30);
+                this.Location = new Point(originalLocation.X - pixels, originalLocation.Y);
+                await Task.Delay(30);
+            }
+
+            this.Location = originalLocation;
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
