@@ -46,7 +46,7 @@ namespace projetStarGate
             this.lblEquipage = new System.Windows.Forms.Label();
             this.lblFeuille = new System.Windows.Forms.Label();
             this.lblEtape3 = new System.Windows.Forms.Label();
-            this.btnValiderMission = new System.Windows.Forms.Button();
+            this.btnValiderEtape1 = new System.Windows.Forms.Button();
             this.grpEtape3 = new System.Windows.Forms.GroupBox();
             this.btnValider = new System.Windows.Forms.Button();
             this.btnSuppriemrAlien = new System.Windows.Forms.Button();
@@ -63,12 +63,10 @@ namespace projetStarGate
             this.btnAjouterMembre = new System.Windows.Forms.Button();
             this.cboMembres = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.lblSucces = new System.Windows.Forms.Label();
             this.errNBMembres = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errEquipage = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnRetour = new System.Windows.Forms.Button();
-            this.lblTDB = new System.Windows.Forms.Label();
-            this.errDateDepart = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errDateRetour = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errDate = new System.Windows.Forms.ErrorProvider(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.grpEtape1 = new System.Windows.Forms.GroupBox();
             this.btnValiderPlanete = new System.Windows.Forms.Button();
@@ -79,14 +77,16 @@ namespace projetStarGate
             this.dtpDepart = new System.Windows.Forms.DateTimePicker();
             this.lblDepart = new System.Windows.Forms.Label();
             this.lblRetour = new System.Windows.Forms.Label();
+            this.errBudget = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errPage1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.grpEtape2.SuspendLayout();
             this.grpEtape3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errNBMembres)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errEquipage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errDateDepart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errDateRetour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grpEtape1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errBudget)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errPage1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblEtape2
@@ -199,6 +199,7 @@ namespace projetStarGate
             this.txtBudget.Location = new System.Drawing.Point(197, 596);
             this.txtBudget.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtBudget.Name = "txtBudget";
+            this.txtBudget.ShortcutsEnabled = false;
             this.txtBudget.Size = new System.Drawing.Size(76, 29);
             this.txtBudget.TabIndex = 16;
             this.txtBudget.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Infos_KeyPress);
@@ -211,6 +212,7 @@ namespace projetStarGate
             this.txtDataBaz.Location = new System.Drawing.Point(197, 555);
             this.txtDataBaz.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtDataBaz.Name = "txtDataBaz";
+            this.txtDataBaz.ShortcutsEnabled = false;
             this.txtDataBaz.Size = new System.Drawing.Size(76, 29);
             this.txtDataBaz.TabIndex = 15;
             this.txtDataBaz.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Infos_KeyPress);
@@ -223,6 +225,7 @@ namespace projetStarGate
             this.txtEquipage.Location = new System.Drawing.Point(197, 515);
             this.txtEquipage.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtEquipage.Name = "txtEquipage";
+            this.txtEquipage.ShortcutsEnabled = false;
             this.txtEquipage.Size = new System.Drawing.Size(76, 29);
             this.txtEquipage.TabIndex = 14;
             this.txtEquipage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Infos_KeyPress);
@@ -287,20 +290,20 @@ namespace projetStarGate
             this.lblEtape3.TabIndex = 2;
             this.lblEtape3.Text = "3 - Paramêtres de la mission";
             // 
-            // btnValiderMission
+            // btnValiderEtape1
             // 
-            this.btnValiderMission.BackColor = System.Drawing.SystemColors.Info;
-            this.btnValiderMission.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnValiderMission.Font = new System.Drawing.Font("Impact", 18F);
-            this.btnValiderMission.ForeColor = System.Drawing.Color.DimGray;
-            this.btnValiderMission.Location = new System.Drawing.Point(724, 55);
-            this.btnValiderMission.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnValiderMission.Name = "btnValiderMission";
-            this.btnValiderMission.Size = new System.Drawing.Size(106, 41);
-            this.btnValiderMission.TabIndex = 18;
-            this.btnValiderMission.Text = "Suivant";
-            this.btnValiderMission.UseVisualStyleBackColor = false;
-            this.btnValiderMission.Click += new System.EventHandler(this.btnValiderMission_Click);
+            this.btnValiderEtape1.BackColor = System.Drawing.SystemColors.Info;
+            this.btnValiderEtape1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnValiderEtape1.Font = new System.Drawing.Font("Impact", 18F);
+            this.btnValiderEtape1.ForeColor = System.Drawing.Color.DimGray;
+            this.btnValiderEtape1.Location = new System.Drawing.Point(724, 55);
+            this.btnValiderEtape1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnValiderEtape1.Name = "btnValiderEtape1";
+            this.btnValiderEtape1.Size = new System.Drawing.Size(106, 41);
+            this.btnValiderEtape1.TabIndex = 18;
+            this.btnValiderEtape1.Text = "Suivant";
+            this.btnValiderEtape1.UseVisualStyleBackColor = false;
+            this.btnValiderEtape1.Click += new System.EventHandler(this.btnValiderEtape1_Click);
             // 
             // grpEtape3
             // 
@@ -322,7 +325,7 @@ namespace projetStarGate
             this.grpEtape3.Controls.Add(this.label13);
             this.grpEtape3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.grpEtape3.ForeColor = System.Drawing.SystemColors.Info;
-            this.grpEtape3.Location = new System.Drawing.Point(-1, 109);
+            this.grpEtape3.Location = new System.Drawing.Point(-2, 109);
             this.grpEtape3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.grpEtape3.Name = "grpEtape3";
             this.grpEtape3.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -389,8 +392,10 @@ namespace projetStarGate
             this.txtObjectif.Location = new System.Drawing.Point(460, 486);
             this.txtObjectif.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.txtObjectif.Name = "txtObjectif";
+            this.txtObjectif.ShortcutsEnabled = false;
             this.txtObjectif.Size = new System.Drawing.Size(87, 29);
             this.txtObjectif.TabIndex = 35;
+            this.txtObjectif.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Infos_KeyPress);
             // 
             // label5
             // 
@@ -414,6 +419,7 @@ namespace projetStarGate
             this.cboFiltreMembres.Size = new System.Drawing.Size(162, 27);
             this.cboFiltreMembres.TabIndex = 32;
             this.cboFiltreMembres.SelectedIndexChanged += new System.EventHandler(this.cboFiltreMembres_SelectedIndexChanged);
+            this.cboFiltreMembres.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbo_KeyPress);
             // 
             // flpMembres
             // 
@@ -467,6 +473,7 @@ namespace projetStarGate
             this.cboCapture.Name = "cboCapture";
             this.cboCapture.Size = new System.Drawing.Size(274, 27);
             this.cboCapture.TabIndex = 8;
+            this.cboCapture.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbo_KeyPress);
             // 
             // lblObjectifs
             // 
@@ -506,6 +513,7 @@ namespace projetStarGate
             this.cboMembres.Name = "cboMembres";
             this.cboMembres.Size = new System.Drawing.Size(253, 27);
             this.cboMembres.TabIndex = 8;
+            this.cboMembres.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbo_KeyPress);
             // 
             // label13
             // 
@@ -519,13 +527,22 @@ namespace projetStarGate
             this.label13.TabIndex = 2;
             this.label13.Text = "4 - Affectation des membres";
             // 
+            // lblSucces
+            // 
+            this.lblSucces.AutoSize = true;
+            this.lblSucces.BackColor = System.Drawing.Color.Transparent;
+            this.lblSucces.Font = new System.Drawing.Font("Rubik", 71.99999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSucces.ForeColor = System.Drawing.SystemColors.Info;
+            this.lblSucces.Location = new System.Drawing.Point(-12, 456);
+            this.lblSucces.Name = "lblSucces";
+            this.lblSucces.Size = new System.Drawing.Size(868, 114);
+            this.lblSucces.TabIndex = 29;
+            this.lblSucces.Text = "Création Réussie";
+            this.lblSucces.Visible = false;
+            // 
             // errNBMembres
             // 
             this.errNBMembres.ContainerControl = this;
-            // 
-            // errEquipage
-            // 
-            this.errEquipage.ContainerControl = this;
             // 
             // btnRetour
             // 
@@ -542,27 +559,9 @@ namespace projetStarGate
             this.btnRetour.UseVisualStyleBackColor = false;
             this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
             // 
-            // lblTDB
+            // errDate
             // 
-            this.lblTDB.AutoSize = true;
-            this.lblTDB.BackColor = System.Drawing.Color.Transparent;
-            this.lblTDB.Font = new System.Drawing.Font("Rubik", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTDB.ForeColor = System.Drawing.SystemColors.Info;
-            this.lblTDB.Location = new System.Drawing.Point(338, 23);
-            this.lblTDB.Name = "lblTDB";
-            this.lblTDB.Size = new System.Drawing.Size(160, 46);
-            this.lblTDB.TabIndex = 29;
-            this.lblTDB.Text = "      Retour au \r\ntableau de bord";
-            this.lblTDB.Click += new System.EventHandler(this.pictureBox1_Click);
-            this.lblTDB.MouseLeave += new System.EventHandler(this.label4_MouseLeave);
-            // 
-            // errDateDepart
-            // 
-            this.errDateDepart.ContainerControl = this;
-            // 
-            // errDateRetour
-            // 
-            this.errDateRetour.ContainerControl = this;
+            this.errDate.ContainerControl = this;
             // 
             // pictureBox1
             // 
@@ -574,7 +573,6 @@ namespace projetStarGate
             this.pictureBox1.TabIndex = 28;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            this.pictureBox1.MouseHover += new System.EventHandler(this.pictureBox1_MouseHover);
             // 
             // grpEtape1
             // 
@@ -604,12 +602,12 @@ namespace projetStarGate
             this.btnValiderPlanete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnValiderPlanete.Font = new System.Drawing.Font("Impact", 18F);
             this.btnValiderPlanete.ForeColor = System.Drawing.Color.DimGray;
-            this.btnValiderPlanete.Location = new System.Drawing.Point(647, 218);
+            this.btnValiderPlanete.Location = new System.Drawing.Point(636, 224);
             this.btnValiderPlanete.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnValiderPlanete.Name = "btnValiderPlanete";
-            this.btnValiderPlanete.Size = new System.Drawing.Size(148, 50);
+            this.btnValiderPlanete.Size = new System.Drawing.Size(112, 41);
             this.btnValiderPlanete.TabIndex = 5;
-            this.btnValiderPlanete.Text = "Suivant";
+            this.btnValiderPlanete.Text = "Valider";
             this.btnValiderPlanete.UseVisualStyleBackColor = false;
             this.btnValiderPlanete.Click += new System.EventHandler(this.btnValiderPlanete_Click);
             // 
@@ -667,7 +665,6 @@ namespace projetStarGate
             this.dtpRetour.Name = "dtpRetour";
             this.dtpRetour.Size = new System.Drawing.Size(264, 26);
             this.dtpRetour.TabIndex = 13;
-            this.dtpRetour.ValueChanged += new System.EventHandler(this.dtpRetour_ValueChanged);
             // 
             // dtpDepart
             // 
@@ -684,7 +681,6 @@ namespace projetStarGate
             this.dtpDepart.Name = "dtpDepart";
             this.dtpDepart.Size = new System.Drawing.Size(263, 26);
             this.dtpDepart.TabIndex = 6;
-            this.dtpDepart.ValueChanged += new System.EventHandler(this.dtpDepart_ValueChanged);
             // 
             // lblDepart
             // 
@@ -710,6 +706,14 @@ namespace projetStarGate
             this.lblRetour.TabIndex = 8;
             this.lblRetour.Text = "Date de retour";
             // 
+            // errBudget
+            // 
+            this.errBudget.ContainerControl = this;
+            // 
+            // errPage1
+            // 
+            this.errPage1.ContainerControl = this;
+            // 
             // Creation_Mission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -718,11 +722,11 @@ namespace projetStarGate
             this.BackgroundImage = global::projetStarGate.Properties.Resources.Logo_Stargate2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(844, 1041);
-            this.Controls.Add(this.lblTDB);
+            this.Controls.Add(this.lblSucces);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnRetour);
             this.Controls.Add(this.grpEtape3);
-            this.Controls.Add(this.btnValiderMission);
+            this.Controls.Add(this.btnValiderEtape1);
             this.Controls.Add(this.grpEtape2);
             this.Controls.Add(this.grpEtape1);
             this.DoubleBuffered = true;
@@ -738,12 +742,12 @@ namespace projetStarGate
             this.grpEtape3.ResumeLayout(false);
             this.grpEtape3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errNBMembres)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errEquipage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errDateDepart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errDateRetour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grpEtape1.ResumeLayout(false);
             this.grpEtape1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errBudget)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errPage1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -759,7 +763,7 @@ namespace projetStarGate
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnValiderMission;
+        private System.Windows.Forms.Button btnValiderEtape1;
         private System.Windows.Forms.RichTextBox txtFeuille;
         private System.Windows.Forms.TextBox txtBudget;
         private System.Windows.Forms.TextBox txtDataBaz;
@@ -792,11 +796,11 @@ namespace projetStarGate
         private FlowLayoutPanel flpCaptures;
         private Button btnSuppriemrAlien;
         private ErrorProvider errNBMembres;
-        private ErrorProvider errEquipage;
         private Button btnRetour;
-        private Label lblTDB;
         private PictureBox pictureBox1;
-        private ErrorProvider errDateDepart;
-        private ErrorProvider errDateRetour;
+        private ErrorProvider errDate;
+        private ErrorProvider errBudget;
+        private Label lblSucces;
+        private ErrorProvider errPage1;
     }
 }

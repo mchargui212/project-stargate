@@ -6,6 +6,7 @@ using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace projetStarGate
@@ -36,12 +37,11 @@ namespace projetStarGate
 
         private void Creation_Mission_Load(object sender, EventArgs e)
         {
-            lblTDB.Visible = false;
+            errDate.SetError(dtpRetour, "La date de départ doit être antérieure à la date de retour.");
             grpEtape2.Visible = false;
             grpEtape3.Visible = false;
             btnRetour.Visible = false;
-
-            errDateRetour.SetError(dtpRetour, "La date de départ et la date de retour ne peuvent pas être les mêmes.");
+            btnSuppriemrMembre.Enabled = false;
 
             try
             {
@@ -59,7 +59,7 @@ namespace projetStarGate
                 MessageBox.Show(err.Message);
             }
 
-            txtBudget.Text = "0";
+            txtBudget.Text = "1000";
             txtDataBaz.Text = "0";
             txtEquipage.Text = "1";
 
@@ -107,139 +107,153 @@ namespace projetStarGate
 
         private void cboChef_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboChef.SelectedValue != null && !(cboChef.SelectedValue is DataRowView))
-                matriculeChef = cboChef.SelectedValue.ToString();
+            if (cboChef.SelectedItem != null)
+            {
+                DataRowView ligne = (DataRowView)cboChef.SelectedItem;
+                matriculeChef = ligne["matricule"].ToString();
+
+                // Chargement des membres disponibles
+                ChargerMembres("Tous");
+            }
+            else
+            {
+                MessageBox.Show("Aucun chef sélectionné.");
+            }
         }
 
         private void btnValiderPlanete_Click(object sender, EventArgs e)
         {
-            if (lblNomMission.Text != "Nom de la mission :")
+            errDate.Clear();
+            if (dtpDepart.Value.Date >= dtpRetour.Value.Date)
             {
-                grpEtape2.Visible = true;
+                errDate.SetError(dtpRetour, "La date de départ doit être antérieure à la date de retour.");
+                return;
+            }
+            if (dtpDepart.Value.Date < DateTime.Today) 
+            {
+                errDate.SetError(dtpDepart, "La date de départ doit ne doit pas être avant aujourd'hui.");
+                return;
+            }
+            
+            grpEtape2.Visible = true;
 
-                // Initialisation des listes et FlowLayoutPanel
-                membres.Clear();
-                capture.Clear();
-                flpMembres.Controls.Clear();
-                flpCaptures.Controls.Clear();
+            membres.Clear();
+            capture.Clear();
+            flpMembres.Controls.Clear();
+            flpCaptures.Controls.Clear();
 
-                try
+            try
+            {
+                // Select des chefs disponibles
+                string sql = "SELECT a.matricule AS matricule, a.nom || ' ' || a.prenom AS nomComplet " +
+                    "FROM Membre a " +
+                    "WHERE a.matricule LIKE 'M%' " +
+                    "AND NOT EXISTS ( SELECT a.matricule " +
+                    "FROM Composer c " +
+                    "JOIN Mission m ON m.numero = c.numeroMission " +
+                    "AND m.nomPlanete = c.nomPlanete " +
+                    "WHERE c.matriculeMembre = a.matricule " +
+                    "AND m.dateDepart <= @dateRetour " +
+                    "AND m.dateRetour >= @dateDepart);";
+
+                SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
+                cmd.Parameters.AddWithValue("@dateDepart", dtpDepart.Value.ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("@dateRetour", dtpRetour.Value.ToString("yyyy-MM-dd"));
+
+                // Chargement de la comboBox
+                DataTable dt = new DataTable();
+                dt.Load(cmd.ExecuteReader());
+                cboChef.DataSource = dt;
+                cboChef.DisplayMember = "nomComplet";
+                cboChef.ValueMember = "matricule";
+
+                // On ne peut plus changer les données de l'étape 1
+                btnValiderPlanete.Visible = false;
+                cboPlanete.Enabled = false;
+                dtpDepart.Enabled = false;
+                dtpRetour.Enabled = false;
+            }
+            catch (SQLiteException err)
+            {
+                MessageBox.Show(err.Message);
+            }
+
+            try
+            {
+                // Select des espèces ennemies
+                string sql = "SELECT e.id AS id, e.nom AS nom " +
+                    "FROM Espece e " +
+                    "JOIN Habiter h ON e.id = h.idEspece " +
+                    "JOIN Ennemi en ON en.idEspece = e.id " +
+                    "WHERE h.nomPlanete = @nomPlanete;";
+                SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
+                cmd.Parameters.AddWithValue("@nomPlanete", nomPlanete);
+
+                // Chargement de la comboBox
+                DataTable dt = new DataTable();
+                dt.Load(cmd.ExecuteReader());
+                cboCapture.DataSource = dt;
+                cboCapture.DisplayMember = "nom";
+                cboCapture.ValueMember = "id";
+
+                if (cboCapture.Items.Count == 0)
                 {
-                    // Chargement du chef disponible
-                    string sql = @"SELECT a.matricule AS matricule, a.nom || ' ' || a.prenom AS nomComplet
-    FROM Membre a
-    WHERE a.matricule LIKE 'M%'
-    AND NOT EXISTS (
-        SELECT 1
-        FROM Composer c
-        JOIN Mission m ON m.numero = c.numeroMission
-                       AND m.nomPlanete = c.nomPlanete
-        WHERE c.matriculeMembre = a.matricule
-          AND m.dateDepart <= @dateRetour
-          AND m.dateRetour >= @dateDepart
-    );";
-
-                    SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
-                    cmd.Parameters.AddWithValue("@dateDepart", dtpDepart.Value.ToString("yyyy-MM-dd"));
-                    cmd.Parameters.AddWithValue("@dateRetour", dtpRetour.Value.ToString("yyyy-MM-dd"));
-
-                    DataTable dt = new DataTable();
-                    dt.Load(cmd.ExecuteReader());
-
-                    cboChef.DataSource = dt;
-                    cboChef.DisplayMember = "nomComplet";
-                    cboChef.ValueMember = "matricule";
-                }
-                catch (SQLiteException err)
-                {
-                    MessageBox.Show(err.Message);
+                    btnSuppriemrAlien.Visible = false;
+                    lblObjectifs.Visible = false;
+                    cboCapture.Visible = false;
+                    lblNBAlien.Visible = false;
+                    txtObjectif.Visible = false;
+                    btnAjouterCapture.Visible = false;
+                    flpCaptures.Visible = false;
                 }
 
-                try
-                {
-                    // Chargement des espèces ennemies
-                    string sql = "SELECT e.id AS id, e.nom AS nom " +
-                        "FROM Espece e " +
-                        "JOIN Habiter h ON e.id = h.idEspece " +
-                        "JOIN Ennemi en ON en.idEspece = e.id " +
-                        "WHERE h.nomPlanete = @nomPlanete;";
-                    SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
-                    cmd.Parameters.AddWithValue("@nomPlanete", nomPlanete);
-
-                    DataTable dt = new DataTable();
-                    dt.Load(cmd.ExecuteReader());
-
-                    cboCapture.DataSource = dt;
-                    cboCapture.DisplayMember = "nom";
-                    cboCapture.ValueMember = "id";
-
-                    if (cboPlanete.Items.Count == 0 && cboPlanete.Items[0].ToString() == "")
-                    {
-                        lblObjectifs.Visible = false;
-                        cboCapture.Visible = false;
-                        lblNBAlien.Visible = false;
-                        txtObjectif.Visible = false;
-                        btnAjouterCapture.Visible = false;
-                        flpCaptures.Visible = false;
-                        btnSuppriemrAlien.Visible = false;
-                        btnValider.Location = new System.Drawing.Point(382, 619);
-                    }
-
-                }
-                catch (SQLiteException err)
-                {
-                    MessageBox.Show(err.Message);
-                }
-
-                try
-                {
-                    // Chargement des membres disponibles
-                    ChargerMembres();
-                }
-                catch (SQLiteException err)
-                {
-                    MessageBox.Show(err.Message);
-                }
+            }
+            catch (SQLiteException err)
+            {
+                MessageBox.Show(err.Message);
             }
         }
 
-        private void ChargerMembres(string filtre = "Tous")
+        private void ChargerMembres(string filtre)
         {
             try
             {
-                string sql = "SELECT a.matricule, a.nom || ' ' || a.prenom AS nomComplet, " +
-                    "IFNULL(civ.specialite, IFNULL(mil.grade, 'Militaire')) AS metier " +
+                // Chargement des membres disponibles
+                string sql =
+                    "SELECT a.matricule, " +
+                    "a.nom || ' ' || a.prenom AS nomComplet, " +
+                    "IFNULL(civ.specialite, mil.grade) AS metier " +
                     "FROM Membre a " +
                     "LEFT JOIN Civil civ ON civ.matriculeMembre = a.matricule " +
                     "LEFT JOIN Militaire mil ON mil.matriculeMembre = a.matricule " +
                     "WHERE NOT EXISTS ( " +
-                    "    SELECT 1 FROM Composer c " +
-                    "    JOIN Mission m ON m.numero = c.numeroMission " +
-                    "                   AND m.nomPlanete = c.nomPlanete " +
-                    "    WHERE c.matriculeMembre = a.matricule " +
-                    "      AND m.dateDepart <= @dateRetour " +
-                    "      AND m.dateRetour >= @dateDepart " +
-                    ") ";
+                    "SELECT 1 " +
+                    "FROM Composer c " +
+                    "JOIN Mission m ON m.numero = c.numeroMission " +
+                    "AND m.nomPlanete = c.nomPlanete " +
+                    "WHERE c.matriculeMembre = a.matricule " +
+                    "AND m.dateDepart <= @dateRetour " +
+                    "AND m.dateRetour >= @dateDepart )" +
+                    "AND a.matricule != @matriculeChef";
 
                 if (filtre != "Tous")
                 {
                     sql += " AND IFNULL(civ.specialite, mil.grade) = @filtre";
                 }
-
                 SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
 
                 cmd.Parameters.AddWithValue("@dateDepart", dtpDepart.Value.ToString("yyyy-MM-dd"));
-
                 cmd.Parameters.AddWithValue("@dateRetour", dtpRetour.Value.ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("@matriculeChef", matriculeChef);
 
                 if (filtre != "Tous")
                 {
                     cmd.Parameters.AddWithValue("@filtre", filtre);
                 }
 
+                // Chargement de la comboBox
                 DataTable dt = new DataTable();
                 dt.Load(cmd.ExecuteReader());
-
                 cboMembres.DataSource = dt;
                 cboMembres.DisplayMember = "nomComplet";
                 cboMembres.ValueMember = "matricule";
@@ -258,24 +272,44 @@ namespace projetStarGate
                 if (!membres.Contains(matricule))
                 {
                     string nomComplet = cboMembres.Text;
-                    string metier = "Militaire";
+                    string metier = "";
 
-                    if (matricule[0] != 'M')
-                    {
-                        string sql = "SELECT specialite FROM Civil WHERE matriculeMembre = @matricule";
+                    // si militaire
+                    if (matricule[0] == 'M')
+                    {                        
+                        string sql = "SELECT grade FROM Militaire WHERE matriculeMembre = @matricule";
                         SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
                         cmd.Parameters.AddWithValue("@matricule", matricule);
+
                         SQLiteDataReader dr = cmd.ExecuteReader();
                         if (dr.Read())
                             metier = dr.GetString(0);
                         dr.Close();
+
+                        Membre nouveauMembre = new Membre(nomComplet, metier, "images/grades/" + metier + ".png");
+                        nouveauMembre.Name = matricule;
+
+                        flpMembres.Controls.Add(nouveauMembre);
+                        membres.Add(matricule);
                     }
-                    Membre nouveauMembre = new Membre(nomComplet, metier, "imag/Terre.png");
-                    nouveauMembre.Name = matricule;
+                    // si civil
+                    else
+                    {
+                        string sql = "SELECT specialite FROM Civil WHERE matriculeMembre = @matricule";
+                        SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
+                        cmd.Parameters.AddWithValue("@matricule", matricule);
 
-                    flpMembres.Controls.Add(nouveauMembre);
-                    membres.Add(matricule);
+                        SQLiteDataReader dr = cmd.ExecuteReader();
+                        if (dr.Read())
+                            metier = dr.GetString(0);
+                        dr.Close();
 
+                        Membre nouveauMembre = new Membre(nomComplet, metier, "images/specs/" + metier + ".png");
+                        nouveauMembre.Name = matricule;
+
+                        flpMembres.Controls.Add(nouveauMembre);
+                        membres.Add(matricule);
+                    }                   
                     btnSuppriemrMembre.Enabled = true;
                 }
             }
@@ -290,7 +324,10 @@ namespace projetStarGate
                 {
                     try
                     {
-                        string sql = "SELECT typeArme FROM Ennemi WHERE idEspece = @id;";
+                        string sql = "SELECT typeArme, couleur " +
+                            "FROM Ennemi " +
+                            "JOIN Espece ON id = idEspece " +
+                            "WHERE idEspece = @id;";
                         SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
                         cmd.Parameters.AddWithValue("@id", idEspece);
 
@@ -300,8 +337,9 @@ namespace projetStarGate
                             string nom = cboCapture.Text;
                             string arme = dr.GetString(0);
                             int nb = int.Parse(txtObjectif.Text);
+                            string couleur = dr.GetString(1);
 
-                            Alien newAlien = new Alien(nom, arme, nb.ToString(), "images/Terre.png");
+                            Alien newAlien = new Alien(nom, arme, nb.ToString(), "images/especes/" + couleur + ".png");
                             flpCaptures.Controls.Add(newAlien);
                             capture.Add(idEspece, nb);
 
@@ -325,7 +363,7 @@ namespace projetStarGate
 
             foreach (var alien in aSupprimer)
             {
-                // retirer de capture
+                // retirer les captures
                 var key = capture.Keys.FirstOrDefault(k => k == cboCapture.SelectedValue.ToString());
                 if (key != null)
                     capture.Remove(key);
@@ -343,36 +381,52 @@ namespace projetStarGate
 
             foreach (var membre in aSupprimer)
             {
-                // retirer de membres
+                // retirer les membres
                 membres.Remove(membre.Name);
                 flpMembres.Controls.Remove(membre);
                 membre.Dispose();
             }
-
-            btnSuppriemrMembre.Enabled = flpMembres.Controls.Count > 0;
+            if (flpMembres.Controls.Count > 0)
+                btnSuppriemrMembre.Enabled = false;
         }
 
-        private void btnValider_Click(object sender, EventArgs e)
+        private async void btnValider_Click(object sender, EventArgs e)
         {
+            bool succes = true;
+            // Gestion erreurs
+
+            bool entreesValides = true;
             errNBMembres.Clear();
-            errDateRetour.Clear();
-            errDateDepart.Clear();
             if (membres.Count != int.Parse(txtEquipage.Text) - 1)
             {
-                errNBMembres.SetError(flpMembres, "Le nombre d'équipiers requis doit être égal au nombre de membres sélectionnés.");
-                return;
+                errNBMembres.SetError(flpMembres, "Le nombre d'équipiers requis doit être égal à "+txtEquipage.Text+".\nVous pouvez changer cette valeur à la page 1");
+                entreesValides = false;
             }
-            if (dtpDepart.Value.Date >= dtpRetour.Value.Date)
+            errBudget.Clear();
+            errPage1.Clear();
+            if (int.Parse(txtBudget.Text) < 1000) 
             {
-                errDateDepart.SetError(dtpDepart, "La date de départ doit être antérieure à la date de retour.");
-                return;
+                errPage1.SetError(btnRetour,"Votre budget est incorrècte");
+                errBudget.SetError(txtBudget, "Votre Budget est trop bas...");
+                entreesValides = false;
             }
-            if (dtpDepart.Value.ToString("yyyy-MM-dd") == dtpRetour.Value.ToString("yyyy-MM-dd"))
+            if (!entreesValides) 
             {
-                errDateRetour.SetError(dtpRetour, "La date de retour et la date de départ ne peuvent pas être les mêmes.");
-                return;
-            }
+                var originalLocation = this.Location;
+                int pixels = 10;
+                int count = 6;
 
+                for (int i = 0; i < count; i++)
+                {
+                    this.Location = new Point(originalLocation.X + pixels, originalLocation.Y);
+                    await Task.Delay(30);
+                    this.Location = new Point(originalLocation.X - pixels, originalLocation.Y);
+                    await Task.Delay(30);
+                }
+
+                this.Location = originalLocation;
+                return; 
+            }
 
             try
             {
@@ -380,8 +434,8 @@ namespace projetStarGate
                 string sql = @"INSERT INTO Mission 
                                (nomPlanete, numero, nbMembreRequis, dateDepart, dateRetour, matriculeChef, feuilleDeRoute, objectifDatabaz, budget)
                                VALUES (@nomPlanete, @numero, @nbMembreRequis, @dateDepart, @dateRetour, @matriculeChef, @feuilleDeRoute, @objectifDatabaz, @budget)";
+                
                 SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
-
                 cmd.Parameters.AddWithValue("@nomPlanete", nomPlanete);
                 cmd.Parameters.AddWithValue("@numero", numero);
                 cmd.Parameters.AddWithValue("@nbMembreRequis", txtEquipage.Text);
@@ -394,34 +448,40 @@ namespace projetStarGate
 
                 int ajout = cmd.ExecuteNonQuery();
                 if (ajout == 1)
-                    MessageBox.Show("Mission ajoutée avec succès!", "Création réussie");
-                else
-                    MessageBox.Show("Nous n'avons pas réussi à créer votre mission. Veuillez réessayer.", "OUPS!");
+                    succes = true;
             }
             catch (Exception err)
             {
                 MessageBox.Show(err.Message);
+                succes = false;
             }
 
             try
             {
+                // Insert Chef
+                string sql = "INSERT INTO Composer VALUES(@nomPlanete, @numero, @matriculeMembre)";
+                SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
+                cmd.Parameters.AddWithValue("@nomPlanete", nomPlanete);
+                cmd.Parameters.AddWithValue("@numero", numero);
+                cmd.Parameters.AddWithValue("@matriculeMembre", matriculeChef);
+                cmd.ExecuteNonQuery();
+
                 // Insert membres dans Composer
                 foreach (string matricule in membres)
                 {
-                    string sql = "INSERT INTO Composer VALUES(@nomPlanete, @numero, @matriculeMembre)";
-                    SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
+                    sql = "INSERT INTO Composer VALUES(@nomPlanete, @numero, @matriculeMembre)";
+                    cmd = new SQLiteCommand(sql, Connexion.Connec);
                     cmd.Parameters.AddWithValue("@nomPlanete", nomPlanete);
                     cmd.Parameters.AddWithValue("@numero", numero);
                     cmd.Parameters.AddWithValue("@matriculeMembre", matricule);
                     cmd.ExecuteNonQuery();
                 }
 
-                // Insert ObjectifCapturr
+                // Insert objectifCapturr
                 foreach (var kv in capture)
                 {
-                    string sql = "INSERT INTO ObjectifCapture " +
-                                 "VALUES(@nomPlanete, @numero, @idEspeceEnnemi, @nb)";
-                    SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
+                    sql = "INSERT INTO ObjectifCapture VALUES(@nomPlanete, @numero, @idEspeceEnnemi, @nb)";
+                    cmd = new SQLiteCommand(sql, Connexion.Connec);
                     cmd.Parameters.AddWithValue("@nomPlanete", nomPlanete);
                     cmd.Parameters.AddWithValue("@numero", numero);
                     cmd.Parameters.AddWithValue("@idEspeceEnnemi", kv.Key);
@@ -432,16 +492,28 @@ namespace projetStarGate
             catch (Exception err)
             {
                 MessageBox.Show(err.Message);
+                succes = false;
             }
+            if (succes)
+            {
+                grpEtape3.Visible = false;
+                btnRetour.Visible = false;
+                pictureBox1.Visible = false;
+
+                lblSucces.Visible = true;
+                await Task.Delay(3000);
+                this.Hide();
+            }
+
         }
 
-        private void btnValiderMission_Click(object sender, EventArgs e)
+        private void btnValiderEtape1_Click(object sender, EventArgs e)
         {
             grpEtape2.Visible = false;
             grpEtape1.Visible = false;
             grpEtape3.Visible = true;
             btnRetour.Visible = true;
-            btnValiderMission.Visible = false;
+            btnValiderEtape1.Visible = false;
         }
 
         private void cboFiltreMembres_SelectedIndexChanged(object sender, EventArgs e)
@@ -454,41 +526,13 @@ namespace projetStarGate
 
         private void btnRetour_Click(object sender, EventArgs e)
         {
+            errPage1.Clear();
             btnRetour.Visible = false;
             grpEtape3.Visible = false;
             grpEtape1.Visible = true;
             grpEtape2.Visible = true;
-            btnValiderMission.Visible = true;
+            btnValiderEtape1.Visible = true;
         }
-        private void pictureBox1_MouseHover(object sender, EventArgs e)
-        {
-            lblTDB.Visible = true;
-        }
-
-        private void label4_MouseLeave(object sender, EventArgs e)
-        {
-            lblTDB.Visible = false;
-        }
-
-        private void dtpRetour_ValueChanged(object sender, EventArgs e)
-        {
-            if (dtpDepart.Value.ToString("yyyy-MM-dd") == dtpRetour.Value.ToString("yyyy-MM-dd"))
-            {
-                errDateRetour.SetError(dtpRetour, "La date de retour et la date de départ ne peuvent pas être les mêmes.");
-                return;
-            }
-            errDateRetour.Clear();
-        }
-
-        private void dtpDepart_ValueChanged(object sender, EventArgs e)
-        {
-            if (dtpDepart.Value.Date >= dtpRetour.Value.Date)
-            {
-                errDateDepart.SetError(dtpDepart, "La date de départ doit être antérieure à la date de retour.");
-                return;
-            }
-        }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Hide();
