@@ -31,7 +31,6 @@ namespace projetStarGate
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Creation_Mission));
             this.lblEtape2 = new System.Windows.Forms.Label();
             this.cboChef = new System.Windows.Forms.ComboBox();
             this.grpEtape2 = new System.Windows.Forms.GroupBox();
@@ -326,7 +325,7 @@ namespace projetStarGate
             this.grpEtape3.Controls.Add(this.label13);
             this.grpEtape3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.grpEtape3.ForeColor = System.Drawing.SystemColors.Info;
-            this.grpEtape3.Location = new System.Drawing.Point(-2, 109);
+            this.grpEtape3.Location = new System.Drawing.Point(-4, 109);
             this.grpEtape3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.grpEtape3.Name = "grpEtape3";
             this.grpEtape3.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -534,7 +533,7 @@ namespace projetStarGate
             this.lblSucces.BackColor = System.Drawing.Color.Transparent;
             this.lblSucces.Font = new System.Drawing.Font("Rubik", 71.99999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSucces.ForeColor = System.Drawing.SystemColors.Info;
-            this.lblSucces.Location = new System.Drawing.Point(-12, 456);
+            this.lblSucces.Location = new System.Drawing.Point(-10, 457);
             this.lblSucces.Name = "lblSucces";
             this.lblSucces.Size = new System.Drawing.Size(868, 114);
             this.lblSucces.TabIndex = 29;

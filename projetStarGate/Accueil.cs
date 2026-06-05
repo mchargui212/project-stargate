@@ -190,19 +190,19 @@ namespace projetStarGate
 
             rdbActive = new RadioButton();
             rdbActive.Location = new Point(150, 22);
-            rdbActive.Size = new Size(100, 25);
+            rdbActive.AutoSize = true;
             rdbActive.Name = "rdbActive";
-            rdbActive.Text = "Active";
+            rdbActive.Text = "Actives/Futures";
             rdbActive.Font = new Font(rdbActive.Font.FontFamily, 14);
             rdbActive.CheckedChanged += radioFiltre_CheckedChanged;
             rdbActive.ForeColor = SystemColors.Info;
             grpFiltre.Controls.Add(rdbActive);
 
             rdbTermine = new RadioButton();
-            rdbTermine.Location = new Point(285, 22);
+            rdbTermine.Location = new Point(335, 22);
             rdbTermine.Size = new Size(120, 25);
             rdbTermine.Name = "rdbTermine";
-            rdbTermine.Text = "Terminée";
+            rdbTermine.Text = "Terminées";
             rdbTermine.Font = new Font(rdbTermine.Font.FontFamily, 14);
             rdbTermine.CheckedChanged += radioFiltre_CheckedChanged;
             rdbTermine.ForeColor = SystemColors.Info;
@@ -284,7 +284,7 @@ namespace projetStarGate
                                       mem.nom, mem.prenom, mi.numero, mi.matriculeChef
                                from mission mi
                                join membre mem on mem.matricule = mi.matriculeChef
-                               order by mi.dateDepart, mi.nomPlanete, mi.numero";
+                               order by mi.dateRetour, mi.nomPlanete, mi.numero";
 
                 SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
                 SQLiteDataReader dr = cmd.ExecuteReader();

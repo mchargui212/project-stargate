@@ -124,7 +124,7 @@ namespace projetStarGate
                     "SELECT MAX(montant) " +
                     "FROM Depense d2 " +
                     "WHERE d2.nomPlanete = d.nomPlanete AND d2.numeroMission = d.numeroMission) " +
-                    "AND m.nbMembreRequis > 10;";
+                    "AND m.nbMembreRequis >= 10;";
                 SQLiteCommand command = new SQLiteCommand(requete, connection);
                 SQLiteDataReader re = command.ExecuteReader();
                 table.Load(re);

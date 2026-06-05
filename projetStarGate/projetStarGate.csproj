@@ -157,6 +157,9 @@
     <EmbeddedResource Include="Alien.resx">
       <DependentUpon>Alien.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Creation_Mission.resx">
+      <DependentUpon>Creation_Mission.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
