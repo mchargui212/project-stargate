@@ -160,6 +160,12 @@
     <EmbeddedResource Include="Creation_Mission.resx">
       <DependentUpon>Creation_Mission.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmPlanetes.resx">
+      <DependentUpon>frmPlanetes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRaces.resx">
+      <DependentUpon>frmRaces.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -164,6 +164,7 @@
             this.dgvMissions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMissions.Location = new System.Drawing.Point(6, 19);
             this.dgvMissions.Name = "dgvMissions";
+            this.dgvMissions.ReadOnly = true;
             this.dgvMissions.Size = new System.Drawing.Size(562, 117);
             this.dgvMissions.TabIndex = 0;
             this.dgvMissions.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvEspeces_KeyPress);
@@ -188,6 +189,7 @@
             this.dgvEspeces.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEspeces.Location = new System.Drawing.Point(6, 19);
             this.dgvEspeces.Name = "dgvEspeces";
+            this.dgvEspeces.ReadOnly = true;
             this.dgvEspeces.Size = new System.Drawing.Size(408, 142);
             this.dgvEspeces.TabIndex = 0;
             this.dgvEspeces.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvEspeces_KeyPress);

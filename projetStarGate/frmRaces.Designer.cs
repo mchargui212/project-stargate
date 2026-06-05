@@ -17,9 +17,7 @@
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRaces));
             this.panelFiltres = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.res = new System.Windows.Forms.Button();
             this.Espece_Trouver = new System.Windows.Forms.Label();
             this.btnRechercher = new System.Windows.Forms.Button();
@@ -32,9 +30,10 @@
             this.flpRaces = new System.Windows.Forms.FlowLayoutPanel();
             this.btnRetour = new System.Windows.Forms.Button();
             this.panelBas = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelFiltres.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelBas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelFiltres
@@ -55,22 +54,12 @@
             this.panelFiltres.Size = new System.Drawing.Size(1858, 180);
             this.panelFiltres.TabIndex = 0;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::projetStarGate.Properties.Resources.Logo_Stargate1;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(146, 134);
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
-            // 
             // res
             // 
             this.res.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.res.Font = new System.Drawing.Font("Segoe UI", 20F);
             this.res.ForeColor = System.Drawing.SystemColors.Info;
-            this.res.Location = new System.Drawing.Point(1590, 92);
+            this.res.Location = new System.Drawing.Point(1585, 40);
             this.res.Name = "res";
             this.res.Size = new System.Drawing.Size(250, 76);
             this.res.TabIndex = 8;
@@ -95,11 +84,11 @@
             this.btnRechercher.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRechercher.Font = new System.Drawing.Font("Segoe UI", 25F);
             this.btnRechercher.ForeColor = System.Drawing.SystemColors.Info;
-            this.btnRechercher.Location = new System.Drawing.Point(1441, 90);
+            this.btnRechercher.Location = new System.Drawing.Point(1443, 49);
             this.btnRechercher.Name = "btnRechercher";
-            this.btnRechercher.Size = new System.Drawing.Size(108, 76);
+            this.btnRechercher.Size = new System.Drawing.Size(97, 55);
             this.btnRechercher.TabIndex = 6;
-            this.btnRechercher.Text = "🔍";
+            this.btnRechercher.Text = "OK";
             this.btnRechercher.UseVisualStyleBackColor = false;
             this.btnRechercher.Click += new System.EventHandler(this.btnRechercher_Click);
             // 
@@ -208,6 +197,16 @@
             this.panelBas.Size = new System.Drawing.Size(1858, 62);
             this.panelBas.TabIndex = 1;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::projetStarGate.Properties.Resources.Logo_Stargate1;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(146, 134);
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmRaces
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -226,8 +225,8 @@
             this.Load += new System.EventHandler(this.frmRaces_Load);
             this.panelFiltres.ResumeLayout(false);
             this.panelFiltres.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelBas.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
