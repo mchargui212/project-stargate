@@ -25,6 +25,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Statistiques));
             this.dgvReq1 = new System.Windows.Forms.DataGridView();
             this.dgvReq2 = new System.Windows.Forms.DataGridView();
             this.dgvReq3 = new System.Windows.Forms.DataGridView();

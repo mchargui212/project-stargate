@@ -30,7 +30,7 @@ namespace projetStarGate
                 SQLiteConnection connection = Connexion.Connec;
 
                 string requete = "SELECT mb.nom || ' ' || mb.prenom AS Coéquipier, " +
-                    "IIF(mil.matriculeMembre IS NOT NULL, 'Militaire', 'Civil') AS Metier " +
+                    "IIF(mil.matriculeMembre IS NOT NULL, 'Militaire', 'Civil') AS Categorie " +
                     "FROM Membre mb " +
                     "JOIN Composer c1 ON mb.matricule = c1.matriculeMembre " +
                     "JOIN Composer c2 ON c1.nomPlanete = c2.nomPlanete AND c1.numeroMission = c2.numeroMission " +
@@ -297,19 +297,38 @@ namespace projetStarGate
         // Applique le style graphique aux DataGridView
         private void StyleDGV(DataGridView dgv)
         {
+            dgv.BackgroundColor = Color.FromArgb(40, 40, 40);
+            dgv.GridColor = Color.Gray;
+            dgv.BorderStyle = BorderStyle.FixedSingle;
+
+            dgv.DefaultCellStyle.BackColor = Color.FromArgb(40, 40, 40);
+            dgv.DefaultCellStyle.ForeColor = SystemColors.Info;
+            dgv.DefaultCellStyle.SelectionBackColor = Color.Gray;
+            dgv.DefaultCellStyle.SelectionForeColor = SystemColors.Info;
+            dgv.DefaultCellStyle.Font = new Font(dgv.Font.FontFamily, 13);
+
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(30, 30, 30);
+            dgv.ColumnHeadersDefaultCellStyle.ForeColor = SystemColors.Info;
+            dgv.ColumnHeadersDefaultCellStyle.Font = new Font(dgv.Font.FontFamily, 13, FontStyle.Bold);
+            dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+
             dgv.EnableHeadersVisualStyles = false;
 
-            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(40, 40, 40);
-            dgv.ColumnHeadersDefaultCellStyle.ForeColor = SystemColors.Info;
-            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Rubik", 16, FontStyle.Bold);
+            dgv.RowHeadersVisible = false;
+            dgv.AllowUserToAddRows = false;
+            dgv.AllowUserToDeleteRows = false;
+            dgv.AllowUserToResizeRows = false;
+            dgv.ReadOnly = true;
 
-            dgv.DefaultCellStyle.BackColor = Color.FromArgb(56, 56, 56);
-            dgv.DefaultCellStyle.ForeColor = SystemColors.Info;
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
-            dgv.DefaultCellStyle.SelectionBackColor = SystemColors.Info;
-            dgv.DefaultCellStyle.SelectionForeColor = Color.FromArgb(56, 56, 56);
+            dgv.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgv.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
-            dgv.GridColor = Color.FromArgb(80, 80, 80);
+            dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgv.MultiSelect = false;
         }
 
         // Empêche la saisie manuelle dans la ComboBox

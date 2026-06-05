@@ -38,6 +38,12 @@
     <Reference Include="BCrypt.Net-Next, Version=4.1.0.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
       <HintPath>packages\BCrypt.Net-Next.4.1.0\lib\net472\BCrypt.Net-Next.dll</HintPath>
     </Reference>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>packages\BouncyCastle.Cryptography.2.6.2\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.5, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13.5\lib\net461\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
@@ -86,6 +92,39 @@
     <Compile Include="Creation_Mission.Designer.cs">
       <DependentUpon>Creation_Mission.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDetailRace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetailRace.Designer.cs">
+      <DependentUpon>frmDetailRace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlanetes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlanetes.Designer.cs">
+      <DependentUpon>frmPlanetes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRaces.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRaces.Designer.cs">
+      <DependentUpon>frmRaces.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTableauDeBord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTableauDeBord.Designer.cs">
+      <DependentUpon>frmTableauDeBord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GroupBoxCustom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Journal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Journal.Designer.cs">
+      <DependentUpon>Journal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,21 +157,9 @@
     <EmbeddedResource Include="Alien.resx">
       <DependentUpon>Alien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Creation_Mission.resx">
-      <DependentUpon>Creation_Mission.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Membre.resx">
-      <DependentUpon>Membre.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Statistiques.resx">
-      <DependentUpon>Statistiques.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
