@@ -72,7 +72,6 @@
             this.Controls.Add(this.panelContenu);
             this.Controls.Add(this.panelTitre);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmDetailRace";
             this.Text = "frmDetailRace";
