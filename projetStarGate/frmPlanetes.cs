@@ -365,5 +365,10 @@ namespace projetStarGate
         }
 
         private void flpPlanetes_Paint(object sender, PaintEventArgs e) { }
+
+        private void dgvEspeces_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = false;
+        }
     }
 }

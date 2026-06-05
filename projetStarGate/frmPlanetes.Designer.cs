@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPlanetes));
             this.panelHaut = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cmbFiltreDataBaz = new System.Windows.Forms.ComboBox();
@@ -167,6 +166,7 @@
             this.dgvMissions.Name = "dgvMissions";
             this.dgvMissions.Size = new System.Drawing.Size(562, 117);
             this.dgvMissions.TabIndex = 0;
+            this.dgvMissions.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvEspeces_KeyPress);
             // 
             // grpEspeces
             // 
@@ -190,6 +190,7 @@
             this.dgvEspeces.Name = "dgvEspeces";
             this.dgvEspeces.Size = new System.Drawing.Size(408, 142);
             this.dgvEspeces.TabIndex = 0;
+            this.dgvEspeces.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvEspeces_KeyPress);
             // 
             // lblDataBazDetail
             // 
