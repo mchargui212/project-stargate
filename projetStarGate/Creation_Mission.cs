@@ -68,6 +68,7 @@ namespace projetStarGate
 
             try
             {
+                // Select les metier pour le filtre du choix des memebres
                 string sql = "SELECT DISTINCT grade AS metier " +
                     "FROM Militaire " +
                     "UNION " +
@@ -95,6 +96,7 @@ namespace projetStarGate
         {
             if (cboPlanete.SelectedIndex >= 0)
             {
+                // Select le nombre de mission pour 1 planete et ajoute 1
                 string sql = @"SELECT IFNULL(MAX(numero), 0) FROM Mission WHERE nomPlanete = @nomPlanete";
                 SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
                 cmd.Parameters.AddWithValue("@nomPlanete", cboPlanete.SelectedItem.ToString());
@@ -123,6 +125,7 @@ namespace projetStarGate
 
         private void btnValiderPlanete_Click(object sender, EventArgs e)
         {
+            //Gestion d'erreur
             errDate.Clear();
             if (dtpDepart.Value.Date >= dtpRetour.Value.Date)
             {
@@ -324,6 +327,7 @@ namespace projetStarGate
                 {
                     try
                     {
+                        // Select arme et couleur pour le label arme et l'image
                         string sql = "SELECT typeArme, couleur " +
                             "FROM Ennemi " +
                             "JOIN Espece ON id = idEspece " +
@@ -357,9 +361,7 @@ namespace projetStarGate
 
         private void btnSuppriemrAlien_Click(object sender, EventArgs e)
         {
-            var aSupprimer = flpCaptures.Controls.OfType<Alien>()
-                               .Where(a => a.Selectionne)
-                               .ToList();
+            var aSupprimer = flpCaptures.Controls.OfType<Alien>().Where(a => a.Selectionne).ToList();
 
             foreach (var alien in aSupprimer)
             {
@@ -375,9 +377,7 @@ namespace projetStarGate
 
         private void btnSupprimerMembre_Click(object sender, EventArgs e)
         {
-            var aSupprimer = flpMembres.Controls.OfType<Membre>()
-                               .Where(m => m.Selectionne)
-                               .ToList();
+            var aSupprimer = flpMembres.Controls.OfType<Membre>().Where(m => m.Selectionne).ToList();
 
             foreach (var membre in aSupprimer)
             {
@@ -393,8 +393,8 @@ namespace projetStarGate
         private async void btnValider_Click(object sender, EventArgs e)
         {
             bool succes = true;
-            // Gestion erreurs
 
+            // Gestion erreurs
             bool entreesValides = true;
             errNBMembres.Clear();
             if (membres.Count != int.Parse(txtEquipage.Text) - 1)
@@ -410,6 +410,8 @@ namespace projetStarGate
                 errBudget.SetError(txtBudget, "Votre Budget est trop bas...");
                 entreesValides = false;
             }
+
+            // Animation (vibrement) lors d'une erreur d'entré
             if (!entreesValides) 
             {
                 var originalLocation = this.Location;
@@ -494,6 +496,8 @@ namespace projetStarGate
                 MessageBox.Show(err.Message);
                 succes = false;
             }
+
+            // Affiche le "Feedback" et ferme le form
             if (succes)
             {
                 grpEtape3.Visible = false;

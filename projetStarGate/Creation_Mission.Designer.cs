@@ -734,6 +734,8 @@ namespace projetStarGate
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(860, 1080);
+            this.MinimumSize = new System.Drawing.Size(860, 1068);
             this.Name = "Creation_Mission";
             this.Text = "Création d\'une nouvelle mission";
             this.Load += new System.EventHandler(this.Creation_Mission_Load);

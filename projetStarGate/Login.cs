@@ -14,12 +14,13 @@ namespace projetStarGate
 
         public Login()
         {
-            InitializeComponent();
-            CreateLoadingUI();
+            InitializeComponent(); // Initialise les composants du formulaire
+            CreateLoadingUI();     // Crée le label de chargement
         }
 
         private void CreateLoadingUI()
         {
+            // Création du label de chargement
             lblLoading = new Label
             {
                 Text = "Connexion",
@@ -34,10 +35,11 @@ namespace projetStarGate
             lblLoading.BringToFront();
         }
 
-        // Animation "Connexion..."
         private async Task ShowLoading()
         {
             int dots = 0;
+
+            // Boucle tant que le chargement est actif
             while (_loading)
             {
                 dots = (dots + 1) % 4;
@@ -48,27 +50,27 @@ namespace projetStarGate
 
         private async void btnValider_Click(object sender, EventArgs e)
         {
+            // Vérifie les identifiants
             if (ValiderLogin())
             {
+                // Affiche le chargement
                 lblLoading.Visible = true;
                 _loading = true;
 
-                // Lancer l'animation sans bloquer l'UI
+                // Démarre l'animation
                 var loadingTask = ShowLoading();
-
-                // Simulation d'un temps de chargement (ou remplace par tes opérations)
                 await Task.Delay(1200);
-
-                // Arrêter l'animation
                 _loading = false;
                 lblLoading.Visible = false;
-                await loadingTask; // attendre fin boucle proprement
+                await loadingTask;
 
+                // Ouvre la fenêtre suivante
                 new Creation_Mission().Show();
                 this.Hide();
             }
             else
             {
+                // Fait vibrer la fenêtre
                 await Vibrer();
             }
         }
@@ -77,18 +79,25 @@ namespace projetStarGate
         {
             try
             {
+                // Ouvre la connexion si nécessaire
                 if (Connexion.Connec.State != ConnectionState.Open)
                     Connexion.Connec.Open();
 
+                // Requête SQL
                 string sql = "SELECT mdp FROM Admin WHERE login = @login";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec))
                 {
+                    // Remplace @login par le texte saisi
                     cmd.Parameters.AddWithValue("@login", txtLogin.Text.Trim());
+
+                    // Exécute la requête
                     object result = cmd.ExecuteScalar();
 
+                    // Login introuvable
                     if (result == null || result == DBNull.Value)
                         return false;
+
 
                     string mdpStocke = result.ToString();
                     return BCrypt.Net.BCrypt.Verify(txtMdp.Text, mdpStocke);
@@ -96,6 +105,7 @@ namespace projetStarGate
             }
             catch (Exception ex)
             {
+                // Affiche l'erreur
                 MessageBox.Show("Erreur lors de la connexion : " + ex.Message);
                 return false;
             }
@@ -103,23 +113,27 @@ namespace projetStarGate
 
         private async Task Vibrer()
         {
+            // Sauvegarde la position d'origine
             var originalLocation = this.Location;
-            int pixels = 10;
-            int count = 6;
+            int pixels = 10; // Distance du déplacement
+            int count = 6;   // Nombre d'allers-retours
 
             for (int i = 0; i < count; i++)
             {
+                // Déplacement à droite
                 this.Location = new Point(originalLocation.X + pixels, originalLocation.Y);
                 await Task.Delay(30);
+                // Déplacement à gauche
                 this.Location = new Point(originalLocation.X - pixels, originalLocation.Y);
                 await Task.Delay(30);
             }
-
+            // Retour à la position initiale
             this.Location = originalLocation;
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
+            // Cache le formulaire
             this.Hide();
         }
     }

@@ -20,6 +20,7 @@ namespace projetStarGate
             InitializeComponent();
         }
 
+        // Retourne les coéquipiers d'un membre donné
         public DataTable Req1(string matricule)
         {
             DataTable table = new DataTable();
@@ -49,6 +50,7 @@ namespace projetStarGate
             return table;
         }
 
+        // Retourne le budget initial, les dépenses et le budget restant des missions
         public DataTable Req2()
         {
             DataTable table = new DataTable();
@@ -80,6 +82,7 @@ namespace projetStarGate
             return table;
         }
 
+        // Retourne le nombre total de missions par planète
         public DataTable Req3()
         {
             DataTable table = new DataTable();
@@ -103,6 +106,7 @@ namespace projetStarGate
             return table;
         }
 
+        // Retourne la dépense la plus importante des grandes missions
         public DataTable Req4()
         {
             DataTable table = new DataTable();
@@ -133,47 +137,7 @@ namespace projetStarGate
             return table;
         }
 
-        private void Statistiques_Load(object sender, EventArgs e)
-        {
-            StyleDGV(dgvReq1);
-            StyleDGV(dgvReq2);
-            StyleDGV(dgvReq3);
-            StyleDGV(dgvReq4);
-            StyleDGV(dgvReq5);
-
-            try
-            {
-                dgvReq2.DataSource = Req2();
-                dgvReq3.DataSource = Req3();
-                dgvReq4.DataSource = Req4();
-
-                string reqMembres = "SELECT matricule, nom || ' ' || prenom AS NomComplet FROM Membre ORDER BY nom";
-                DataTable membres = new DataTable();
-
-                SQLiteCommand cmd = new SQLiteCommand(reqMembres, Connexion.Connec);
-                SQLiteDataReader r = cmd.ExecuteReader();
-                membres.Load(r);
-
-                cboReq1.DisplayMember = "NomComplet";
-                cboReq1.ValueMember = "matricule";
-                cboReq1.DataSource = membres;
-
-                string reqMissions = "SELECT nomPlanete || '-' || numero AS NomMission, nomPlanete, numero " +
-                    "FROM Mission ORDER BY nomPlanete, numero";
-                DataTable missions = new DataTable();
-                cmd = new SQLiteCommand(reqMissions, Connexion.Connec);
-                r = cmd.ExecuteReader();
-                missions.Load(r);
-                
-                cboReq5.DisplayMember = "NomMission";
-                cboReq5.ValueMember = "NomMission";
-                cboReq5.DataSource = missions;
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message);
-            }
-        }
+        // Retourne l'informateur le moins payé pour une mission donnée
         public DataTable Req5(string nomPlanete, int numeroMission)
         {
             DataTable table = new DataTable();
@@ -211,6 +175,7 @@ namespace projetStarGate
             return table;
         }
 
+        // Affiche les résultats de la requête 1 selon le membre sélectionné
         private void cboReq1_SelectedIndexChanged(object sender, EventArgs e)
         {
             dgvReq1.Visible = false;
@@ -244,6 +209,7 @@ namespace projetStarGate
             }
         }
 
+        // Affiche les résultats de la requête 5 selon la mission sélectionnée
         private void cboReq5_SelectedIndexChanged(object sender, EventArgs e)
         {
             dgvReq5.Visible = false;
@@ -279,11 +245,56 @@ namespace projetStarGate
             }
         }
 
+        // Charge les données et initialise les contrôles du formulaire
+        private void Statistiques_Load(object sender, EventArgs e)
+        {
+            StyleDGV(dgvReq1);
+            StyleDGV(dgvReq2);
+            StyleDGV(dgvReq3);
+            StyleDGV(dgvReq4);
+            StyleDGV(dgvReq5);
+
+            try
+            {
+                dgvReq2.DataSource = Req2();
+                dgvReq3.DataSource = Req3();
+                dgvReq4.DataSource = Req4();
+
+                string reqMembres = "SELECT matricule, nom || ' ' || prenom AS NomComplet FROM Membre ORDER BY nom";
+                DataTable membres = new DataTable();
+
+                SQLiteCommand cmd = new SQLiteCommand(reqMembres, Connexion.Connec);
+                SQLiteDataReader r = cmd.ExecuteReader();
+                membres.Load(r);
+
+                cboReq1.DisplayMember = "NomComplet";
+                cboReq1.ValueMember = "matricule";
+                cboReq1.DataSource = membres;
+
+                string reqMissions = "SELECT nomPlanete || '-' || numero AS NomMission, nomPlanete, numero " +
+                    "FROM Mission ORDER BY nomPlanete, numero";
+                DataTable missions = new DataTable();
+                cmd = new SQLiteCommand(reqMissions, Connexion.Connec);
+                r = cmd.ExecuteReader();
+                missions.Load(r);
+
+                cboReq5.DisplayMember = "NomMission";
+                cboReq5.ValueMember = "NomMission";
+                cboReq5.DataSource = missions;
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
+
+        // Ferme la fenêtre Statistiques
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
         }
 
+        // Applique le style graphique aux DataGridView
         private void StyleDGV(DataGridView dgv)
         {
             dgv.EnableHeadersVisualStyles = false;
@@ -301,6 +312,7 @@ namespace projetStarGate
             dgv.GridColor = Color.FromArgb(80, 80, 80);
         }
 
+        // Empêche la saisie manuelle dans la ComboBox
         private void cboReq1_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
