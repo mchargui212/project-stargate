@@ -5,3 +5,12 @@
 *.suo
 *.userosscache
 *.sln.docstates
+
+### .NET / Visual Studio ###
+**/obj/
+**/packages/
+**/bin/Release/
+**/bin/Debug/*
+!**/bin/Debug/images/
+!**/bin/Debug/Stargate.db
+Thumbs.db
